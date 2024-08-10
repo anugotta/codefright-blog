@@ -2,102 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/android/</loc>
+    <loc>https://www.codefright.com/tags/android/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/apk/</loc>
+    <loc>https://www.codefright.com/tags/apk/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/beginners/</loc>
+    <loc>https://www.codefright.com/tags/beginners/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://www.codefright.com/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://www.codefright.com/posts/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/reverse-engineering/</loc>
+    <loc>https://www.codefright.com/tags/reverse-engineering/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/posts/reverse-engg/</loc>
+    <loc>https://www.codefright.com/posts/reverse-engg/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://www.codefright.com/tags/</loc>
     <lastmod>2024-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/posts/raspberry-pi-cluster/</loc>
+    <loc>https://www.codefright.com/posts/raspberry-pi-cluster/</loc>
     <lastmod>2024-04-06T12:13:43-07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://www.codefright.com/categories/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/css/</loc>
+    <loc>https://www.codefright.com/tags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/html/</loc>
+    <loc>https://www.codefright.com/tags/html/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/markdown/</loc>
+    <loc>https://www.codefright.com/tags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/posts/markdown-syntax/</loc>
+    <loc>https://www.codefright.com/posts/markdown-syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/syntax/</loc>
+    <loc>https://www.codefright.com/categories/syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/themes/</loc>
+    <loc>https://www.codefright.com/tags/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/categories/themes/</loc>
+    <loc>https://www.codefright.com/categories/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/emoji/</loc>
+    <loc>https://www.codefright.com/tags/emoji/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/posts/emoji-support/</loc>
+    <loc>https://www.codefright.com/posts/emoji-support/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://www.codefright.com/archives/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

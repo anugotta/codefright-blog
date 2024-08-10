@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Reverse Engineering on codeFright</title>
-    <link>http://localhost:1313/tags/reverse-engineering/</link>
+    <link>https://www.codefright.com/tags/reverse-engineering/</link>
     <description>Recent content in Reverse Engineering on codeFright</description>
     <image>
       <title>codeFright</title>
-      <url>http://localhost:1313/static/logo.png</url>
-      <link>http://localhost:1313/static/logo.png</link>
+      <url>https://www.codefright.com/static/logo.png</url>
+      <link>https://www.codefright.com/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2024 codeFright</copyright>
     <lastBuildDate>Wed, 29 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.codefright.com/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reverse Engineering an Android APK: A Step-by-Step Guide for Dimwits</title>
-      <link>http://localhost:1313/posts/reverse-engg/</link>
+      <link>https://www.codefright.com/posts/reverse-engg/</link>
       <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/reverse-engg/</guid>
+      <guid>https://www.codefright.com/posts/reverse-engg/</guid>
       <description>Are you curious about what&amp;rsquo;s inside your favorite Android apps? Do you want to peek under the hood and understand how they work? Welcome, fellow dimwit! In this guide, we&amp;rsquo;ll embark on a thrilling journey into the world of reverse engineering Android APKs, step by step.
 Prerequisites Before we begin, make sure you have the following:
 Basic understanding of Android apps Android Studio installed on your computer A decompiler tool (we&amp;rsquo;ll use JADX) Patience and a curious mind!</description>

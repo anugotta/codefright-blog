@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>codeFright</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.codefright.com/</link>
     <description>Recent content on codeFright</description>
     <image>
       <title>codeFright</title>
-      <url>http://localhost:1313/static/logo.png</url>
-      <link>http://localhost:1313/static/logo.png</link>
+      <url>https://www.codefright.com/static/logo.png</url>
+      <link>https://www.codefright.com/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2024 codeFright</copyright>
     <lastBuildDate>Wed, 29 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.codefright.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reverse Engineering an Android APK: A Step-by-Step Guide for Dimwits</title>
-      <link>http://localhost:1313/posts/reverse-engg/</link>
+      <link>https://www.codefright.com/posts/reverse-engg/</link>
       <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/reverse-engg/</guid>
+      <guid>https://www.codefright.com/posts/reverse-engg/</guid>
       <description>Are you curious about what&amp;rsquo;s inside your favorite Android apps? Do you want to peek under the hood and understand how they work? Welcome, fellow dimwit! In this guide, we&amp;rsquo;ll embark on a thrilling journey into the world of reverse engineering Android APKs, step by step.
 Prerequisites Before we begin, make sure you have the following:
 Basic understanding of Android apps Android Studio installed on your computer A decompiler tool (we&amp;rsquo;ll use JADX) Patience and a curious mind!</description>
@@ -52,9 +52,9 @@ Basic understanding of Android apps Android Studio installed on your computer A 
     </item>
     <item>
       <title>Self-hosting on a Raspberry Pi cluster</title>
-      <link>http://localhost:1313/posts/raspberry-pi-cluster/</link>
+      <link>https://www.codefright.com/posts/raspberry-pi-cluster/</link>
       <pubDate>Sat, 06 Apr 2024 12:13:43 -0700</pubDate>
-      <guid>http://localhost:1313/posts/raspberry-pi-cluster/</guid>
+      <guid>https://www.codefright.com/posts/raspberry-pi-cluster/</guid>
       <description>Moving all my personal websites to a Raspberry Pi cluster sitting in my home office</description>
       <content:encoded><![CDATA[<p>This post is an overview of how I went off the grid – or, in other words, moved all my personal websites off Azure and onto a Raspberry Pi cluster sitting in my home office. This isn&rsquo;t exactly a tutorial blog post, but feel free to use this as a reference.</p>
 <h2 id="why-do-this-at-all">Why do this at all?</h2>
@@ -202,9 +202,9 @@ Basic understanding of Android apps Android Studio installed on your computer A 
     </item>
     <item>
       <title>Markdown Syntax Guide</title>
-      <link>http://localhost:1313/posts/markdown-syntax/</link>
+      <link>https://www.codefright.com/posts/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/markdown-syntax/</guid>
+      <guid>https://www.codefright.com/posts/markdown-syntax/</guid>
       <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
       <content:encoded><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
 <h2 id="headings">Headings</h2>
@@ -335,9 +335,9 @@ Basic understanding of Android apps Android Studio installed on your computer A 
     </item>
     <item>
       <title>Emoji Support</title>
-      <link>http://localhost:1313/posts/emoji-support/</link>
+      <link>https://www.codefright.com/posts/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/emoji-support/</guid>
+      <guid>https://www.codefright.com/posts/emoji-support/</guid>
       <description>Guide to emoji usage in Hugo</description>
       <content:encoded><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>
 <p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>
