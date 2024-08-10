@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>codeFright</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on codeFright</description>
+    <image>
+      <title>codeFright</title>
+      <url>http://localhost:1313/static/logo.png</url>
+      <link>http://localhost:1313/static/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en-us</language>
+    <copyright>2024 codeFright</copyright>
+    <lastBuildDate>Wed, 29 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reverse Engineering an Android APK: A Step-by-Step Guide for Dimwits</title>
+      <link>http://localhost:1313/posts/reverse-engg/</link>
+      <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/reverse-engg/</guid>
+      <description>Are you curious about what&amp;rsquo;s inside your favorite Android apps? Do you want to peek under the hood and understand how they work? Welcome, fellow dimwit! In this guide, we&amp;rsquo;ll embark on a thrilling journey into the world of reverse engineering Android APKs, step by step.
+Prerequisites Before we begin, make sure you have the following:
+Basic understanding of Android apps Android Studio installed on your computer A decompiler tool (we&amp;rsquo;ll use JADX) Patience and a curious mind!</description>
+      <content:encoded><![CDATA[<p>Are you curious about what&rsquo;s inside your favorite Android apps? Do you want to peek under the hood and understand how they work? Welcome, fellow dimwit! In this guide, we&rsquo;ll embark on a thrilling journey into the world of reverse engineering Android APKs, step by step.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, make sure you have the following:</p>
+<ul>
+<li>Basic understanding of Android apps</li>
+<li>Android Studio installed on your computer</li>
+<li>A decompiler tool (we&rsquo;ll use JADX)</li>
+<li>Patience and a curious mind!</li>
+</ul>
+<h2 id="step-1-obtain-the-apk">Step 1: Obtain the APK</h2>
+<p>The first step is to obtain the APK file of the app you want to reverse engineer. You can download APKs from various sources or extract them from your own device using tools like ADB (Android Debug Bridge).</p>
+<h2 id="step-2-setting-up-android-studio">Step 2: Setting up Android Studio</h2>
+<p>If you haven&rsquo;t already, install Android Studio. We&rsquo;ll use it to set up a basic project for viewing the decompiled code.</p>
+<h2 id="step-3-decompiling-the-apk">Step 3: Decompiling the APK</h2>
+<p>Next, we&rsquo;ll use JADX, a powerful decompiler tool, to decompile the APK and view its Java code. Simply drag and drop the APK file into JADX, and it will decompile the code for you.</p>
+<h2 id="step-4-analyzing-the-decompiled-code">Step 4: Analyzing the Decompiled Code</h2>
+<p>Now comes the fun part! Dive into the decompiled code and start exploring. Look for interesting classes, methods, and resources. Try to understand how different parts of the app function together.</p>
+<h2 id="step-5-modifying-and-experimenting">Step 5: Modifying and Experimenting</h2>
+<p>Feeling adventurous? Experiment with the code! Make small changes and see how they affect the app&rsquo;s behavior. But remember, always do this in a controlled environment, preferably on a test device or emulator.</p>
+<h2 id="step-6-building-your-own-understanding">Step 6: Building Your Own Understanding</h2>
+<p>As you explore the decompiled code, take notes and document your findings. Building your understanding of how Android apps work will not only enhance your reverse engineering skills but also deepen your overall knowledge of mobile development.</p>
+<h2 id="step-7-ethical-considerations">Step 7: Ethical Considerations</h2>
+<p>It&rsquo;s crucial to remember the ethical implications of reverse engineering. Respect the developer&rsquo;s intellectual property rights and only use your newfound knowledge for learning purposes. Avoid reverse engineering apps with malicious intent or for illegal activities.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Congratulations, dimwit! You&rsquo;ve successfully embarked on a journey into the fascinating world of reverse engineering Android APKs. Remember, this is just the beginning. Keep exploring, learning, and pushing the boundaries of your curiosity. Happy hacking!</p>
+<p>Stay tuned for more exciting adventures in the world of tech on [Your Blog Name]!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Self-hosting on a Raspberry Pi cluster</title>
+      <link>http://localhost:1313/posts/raspberry-pi-cluster/</link>
+      <pubDate>Sat, 06 Apr 2024 12:13:43 -0700</pubDate>
+      <guid>http://localhost:1313/posts/raspberry-pi-cluster/</guid>
+      <description>Moving all my personal websites to a Raspberry Pi cluster sitting in my home office</description>
+      <content:encoded><![CDATA[<p>This post is an overview of how I went off the grid – or, in other words, moved all my personal websites off Azure and onto a Raspberry Pi cluster sitting in my home office. This isn&rsquo;t exactly a tutorial blog post, but feel free to use this as a reference.</p>
+<h2 id="why-do-this-at-all">Why do this at all?</h2>
+<p>You might be wondering, &ldquo;Savannah, why do this? Didn&rsquo;t you used to work on Azure tooling full-time?&rdquo; To which I&rsquo;d reply, &ldquo;Yes, yes I did.&rdquo; But really, this isn&rsquo;t about criticizing Azure or any other major cloud service provider. I simply enjoy physical computing, like to experiment, and also no longer receive any free employee credits for Azure, so I thought, why not?</p>
+<h2 id="meet-arrakis">Meet Arrakis!</h2>
+<p>Alright, I might have had Dune on the brain when I built this, but Dune Part Two is literally a masterpiece, so can you blame me? My little rig consists of 3 Raspberry Pi 4Bs (each with 4 CPUs and 8 GB RAM), all running Raspberry Pi OS Lite (64-bit), which is a port of Debian Bullseye without a desktop environment. Each of these devices uses Power over Ethernet (PoE) for networking and power over a single cable per Pi. I&rsquo;ll delve into this a bit later, but it&rsquo;s worth noting that the cluster doesn&rsquo;t run Kubernetes; instead, it leverages Docker Swarm to create the cluster (it&rsquo;s literally 2 commands to configure everything – mind blown!).</p>
+<p><img loading="lazy" src="../cluster-1.png" alt="alt text"  />
+</p>
+<h3 id="materials-for-the-build">Materials for the build</h3>
+<p>I&rsquo;ll be candid – this wasn&rsquo;t cheap. Raspberry Pis are hot commodities, so it cost me a pretty penny to gather everything I needed for this build. I&rsquo;ll link what I bought, but do keep in mind that prices may vary. At the time of building, this set me back approximately $506.67 USD.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Price (in USD)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.amazon.com/gp/product/B07D5NM9ZG">C4Labs Cloudlet Case in Clear</a></td>
+<td>$99.08</td>
+<td>Though I&rsquo;m only building a 3 Pi cluster right now, this gives me some space to store the Switch or add additional Pis in the future</td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/gp/product/B076HZFY3F">TP-Link TL-SG1005P, 5 Port Gigabit PoE Switch</a></td>
+<td>$49.53</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/gp/product/B082ZLDMZ6">UCTRONICS PoE HAT for Raspberry Pi (3x)</a></td>
+<td>$21.99</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/gp/product/B00GBBSX92">1.5-ft Ethernet cables (6 pack)</a></td>
+<td>$16.99</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/gp/product/B0899VXM8F">Raspberry Pi 4 Model B 8GB (3x)</a></td>
+<td>$82.71</td>
+<td>Obviously, this is where I spent the most money.</td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/gp/product/B00M55C0NS">SanDisk Ultra 32GB Micro SD (3x)</a></td>
+<td>$8.99</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>$506.67</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>That said, if you&rsquo;re following along, you may need a couple of other things depending on what you have lying around at home, like a memory card reader for imaging the SD cards. Thankfully, I had one built into my USB dock, so this was unnecessary.</p>
+<h2 id="setting-up-the-cluster">Setting up the cluster</h2>
+<h3 id="step-1-image-a-micro-sd-card-for-each-pi">Step 1: Image a micro SD card for each Pi</h3>
+<p>After assembling the cluster physically, it was time to sort out the software bits. First, I imaged each micro SD card with Raspberry Pi OS Lite using the <a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager utility</a>, and then I inserted each micro SD into each Pi. A vital step here is to remember to go into options and tick the box that allows you to configure SSH with a password before imaging the SD cards.</p>
+<h3 id="step-2-install-docker-">Step 2: Install Docker 🐳</h3>
+<p>Then, I waited for each of them to appear on my home network and grabbed their IP addresses and made note of which Pi had which IP address. After that, I ssh&rsquo;d into each one and <a href="https://docs.docker.com/engine/install/debian/">installed Docker</a> using the official release (which gets updated more frequently than Docker distributed via distros&hellip;heck yes, Moby 26 is out!). I had 3 different terminal tabs opened while I was working so I could switch between them quickly.</p>
+<h3 id="step-3-create-the-cluster-using-docker-swarm">Step 3: Create the cluster using Docker Swarm</h3>
+<p>I&rsquo;ll be honest – I initially planned to set up the cluster with Kubernetes via k3s, but boy howdy, that gave me so many problems right from the get-go. Also, it&rsquo;s a bit of a meme to <a href="https://twitter.com/dexhorthy/status/856639005462417409">host your blog on Kubernetes</a>, so I quickly changed my plan and decided to use Swarm instead. Setting this up was truly magical, save for one snag. Here&rsquo;s how it works:</p>
+<ul>
+<li>Choose one of your Pis to be your Swarm leader.</li>
+<li>Run <code>docker swarm init</code> in the Swarm leader&rsquo;s terminal.</li>
+<li>Copy the generated command and token (<code>docker swarm join</code>).</li>
+<li>Paste the <code>docker swarm join</code> command into the other Pi terminals.</li>
+<li>Boom! You have yourself a cluster ✨</li>
+</ul>
+<p>Seriously, it&rsquo;s that simple! You can validate that everything is working as expected using <code>docker node ls</code> on any of your nodes.
+<img loading="lazy" src="../docker-node-ls.png" alt="Output of docker node ls, with three nodes all in ready state"  />
+</p>
+<blockquote>
+<p>Note: I did run into one little snag with networking, where the default network of the cluster overlapped 1:1 with my home network. I discovered this much later when ingress was broken and I couldn&rsquo;t figure out why. Before moving on, it might be worth verifying that this is not the case. If it is, the fix is fairly simple. You&rsquo;ll just need to <a href="https://docs.docker.com/engine/swarm/networking/#customize-ingress">customize the ingress network</a>. Shout out to <a href="https://stackoverflow.com/questions/59007780/container-running-on-docker-swarm-not-accessible-from-outside/63405536#63405536">this StackOverflow post</a> for helping me debug this!</p>
+</blockquote>
+<h3 id="step-4-write-the-docker-composeyml-for-your-services">Step 4: Write the <code>docker-compose.yml</code> for your services</h3>
+<p>Time to get to defining our services! In this case, I had two websites I wanted to host: 1) my <a href="https://savannahostrowski.com">personal website</a> (where you&rsquo;re reading this post!) and 2) an <a href="https://getshreked.com">uber-professional website</a> that&rsquo;s an inside joke.</p>
+<p>If you&rsquo;re familiar with Docker, this part is quite straightforward. I had already pushed my website images up to Docker Hub, so this was a pretty quick operation. The only Swarm-specific thing I needed to do is to tell Docker that I had a custom network called <code>arrakis</code> and then make sure that my services connect to it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  savannahdev:
+</span></span><span class="line"><span class="cl">    image: &#34;savannahostrowski/savannah.dev&#34;
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">     - &#34;8080:80&#34;
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">     - arrakis
+</span></span><span class="line"><span class="cl">    deploy:
+</span></span><span class="line"><span class="cl">     mode: replicated
+</span></span><span class="line"><span class="cl">     replicas: 3
+</span></span><span class="line"><span class="cl">  getshreked:
+</span></span><span class="line"><span class="cl">   image: &#34;savannahostrowski/getshreked&#34;
+</span></span><span class="line"><span class="cl">   ports:
+</span></span><span class="line"><span class="cl">     - &#34;8081:80&#34;
+</span></span><span class="line"><span class="cl">   networks:
+</span></span><span class="line"><span class="cl">     - arrakis
+</span></span><span class="line"><span class="cl">   deploy:
+</span></span><span class="line"><span class="cl">     mode: replicated
+</span></span><span class="line"><span class="cl">     replicas: 3
+</span></span><span class="line"><span class="cl">networks:
+</span></span><span class="line"><span class="cl">  arrakis: {}
+</span></span></code></pre></div><p>Deploying this Compose file is a single command using <code>docker stack deploy --compose-file docker-compose.yml arrakis</code> from the leader node. Once this command was run, I validated that the services were operational via <code>docker stack services arrakis</code>.</p>
+<p>At this point, you should be able to hit the endpoints on any one of the cluster node IPs and see your website!</p>
+<h3 id="step-5-set-up-cloudflared-as-a-service-in-the-cluster">Step 5: Set up <code>cloudflared</code> as a service in the cluster</h3>
+<p>The last bit here was to obfuscate my IP addresses and make this all accessible to the outside world via my chosen domains. If you thought the cluster setup was magic, just wait until you see how simple it was to set this bit up.</p>
+<p>Thanks to CloudFlare, I&rsquo;m able to do this all via <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Tunnels</a> – or, rather, a single Cloudflared tunnel in my case. This was really as easy as going to my CloudFlare dashboard, creating a tunnel, copying an installation command to paste into my leader node (<code>sudo cloudflared service install &lt;token&gt;</code>), creating another service in my <code>docker-compose.yml</code>, and then redeploying the stack (<code>docker stack deploy --compose-file docker-compose.yml arrakis</code>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  savannahdev:
+</span></span><span class="line"><span class="cl">    image: &#34;savannahostrowski/savannah.dev&#34;
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">     - &#34;8080:80&#34;
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">     - arrakis
+</span></span><span class="line"><span class="cl">    deploy:
+</span></span><span class="line"><span class="cl">     mode: replicated
+</span></span><span class="line"><span class="cl">     replicas: 3
+</span></span><span class="line"><span class="cl">  getshreked:
+</span></span><span class="line"><span class="cl">   image: &#34;savannahostrowski/getshreked&#34;
+</span></span><span class="line"><span class="cl">   ports:
+</span></span><span class="line"><span class="cl">     - &#34;8081:80&#34;
+</span></span><span class="line"><span class="cl">   networks:
+</span></span><span class="line"><span class="cl">     - arrakis
+</span></span><span class="line"><span class="cl">   deploy:
+</span></span><span class="line"><span class="cl">     mode: replicated
+</span></span><span class="line"><span class="cl">     replicas: 3
+</span></span><span class="line"><span class="cl">  cloudflared:
+</span></span><span class="line"><span class="cl">   image: &#34;cloudflare/cloudflared&#34;
+</span></span><span class="line"><span class="cl">   command: &#34;tunnel --no-autoupdate run --token &lt;my-token-here&gt;&#34;
+</span></span><span class="line"><span class="cl">   deploy:
+</span></span><span class="line"><span class="cl">    restart_policy:
+</span></span><span class="line"><span class="cl">     condition: on-failure
+</span></span><span class="line"><span class="cl">    mode: replicated
+</span></span><span class="line"><span class="cl">    replicas: 3
+</span></span><span class="line"><span class="cl">   networks:
+</span></span><span class="line"><span class="cl">    - arrakis
+</span></span><span class="line"><span class="cl">networks:
+</span></span><span class="line"><span class="cl">  arrakis: {}
+</span></span></code></pre></div><p>The last bit here is to configure your public hostnames. In my case, I had one for each website I was deploying. What&rsquo;s really neat is that you just have to pass in the service <code>name:port</code> (where service name matches the Compose service name and port matches your port internal to the container) for it to all work.
+<img loading="lazy" src="../cloudflare-hostname.png" alt="Configuring a hostname for my personal website on Cloudflare"  />
+</p>
+<h2 id="bonus-set-up-tailscale-for-easy-access-to-my-cluster-nodes">Bonus: Set up Tailscale for easy access to my cluster nodes</h2>
+<p>This isn&rsquo;t required but I also took advantage of <a href="https://tailscale.com/">Tailscale</a>&rsquo;s free tier (up to 100 devices!) for easy access to my cluster nodes.</p>
+<p>And that&rsquo;s pretty much it! Hopefully you found this sort of fun - I sure did!</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>http://localhost:1313/posts/markdown-syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/markdown-syntax/</guid>
+      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
+      <content:encoded><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
+<h2 id="headings">Headings</h2>
+<p>The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
+<h1 id="h1">H1</h1>
+<h2 id="h2">H2</h2>
+<h3 id="h3">H3</h3>
+<h4 id="h4">H4</h4>
+<h5 id="h5">H5</h5>
+<h6 id="h6">H6</h6>
+<h2 id="paragraph">Paragraph</h2>
+<p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.</p>
+<p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.</p>
+<h2 id="blockquotes">Blockquotes</h2>
+<p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a <code>footer</code> or <code>cite</code> element, and optionally with in-line changes such as annotations and abbreviations.</p>
+<h4 id="blockquote-without-attribution">Blockquote without attribution</h4>
+<blockquote>
+<p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+<strong>Note</strong> that you can use <em>Markdown syntax</em> within a blockquote.</p>
+</blockquote>
+<h4 id="blockquote-with-attribution">Blockquote with attribution</h4>
+<blockquote>
+<p>Don&rsquo;t communicate by sharing memory, share memory by communicating.</p>
+<p>— <cite>Rob Pike<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
+</blockquote>
+<h2 id="tables">Tables</h2>
+<p>Tables aren&rsquo;t part of the core Markdown spec, but Hugo supports them out-of-the-box.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bob</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<h4 id="inline-markdown-within-tables">Inline Markdown within tables</h4>
+<table>
+<thead>
+<tr>
+<th>Italics</th>
+<th>Bold</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>italics</em></td>
+<td><strong>bold</strong></td>
+<td><code>code</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list-types">List Types</h2>
+<h4 id="ordered-list">Ordered List</h4>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<h4 id="unordered-list">Unordered List</h4>
+<ul>
+<li>List item</li>
+<li>Another item</li>
+<li>And another item</li>
+</ul>
+<h4 id="nested-unordered-list">Nested Unordered list</h4>
+<ul>
+<li>Fruit
+<ul>
+<li>Apple</li>
+<li>Orange</li>
+<li>Banana</li>
+</ul>
+</li>
+<li>Dairy
+<ul>
+<li>Milk</li>
+<li>Cheese</li>
+</ul>
+</li>
+</ul>
+<h4 id="nested-ordered-list">Nested Ordered list</h4>
+<ol>
+<li>Fruit
+<ul>
+<li>Apple</li>
+<li>Orange</li>
+<li>Banana</li>
+</ul>
+</li>
+<li>Dairy
+<ol>
+<li>Milk</li>
+<li>Cheese</li>
+</ol>
+</li>
+<li>Third item
+<ol>
+<li>Sub One</li>
+<li>Sub Two</li>
+</ol>
+</li>
+</ol>
+<h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark</h2>
+<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
+<p>H<sub>2</sub>O</p>
+<p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
+<p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
+<p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The above quote is excerpted from Rob Pike&rsquo;s <a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk</a> during Gopherfest, November 18, 2015.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Emoji Support</title>
+      <link>http://localhost:1313/posts/emoji-support/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/emoji-support/</guid>
+      <description>Guide to emoji usage in Hugo</description>
+      <content:encoded><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>
+<p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>
+<p>To enable emoji globally, set <code>enableEmoji</code> to <code>true</code> in your site&rsquo;s <a href="https://gohugo.io/getting-started/configuration/">configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
+<p><span class="nowrap"><span class="emojify">🙈</span> <code>:see_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙉</span> <code>:hear_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙊</span> <code>:speak_no_evil:</code></span></p>
+<br>
+<p>The <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
+<hr>
+<p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">.emoji {
+</span></span><span class="line"><span class="cl">font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div>
+
+
+<style>
+.emojify {
+	font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+	font-size: 2rem;
+	vertical-align: middle;
+}
+@media screen and (max-width:650px) {
+  .nowrap {
+    display: block;
+    margin: 25px 0;
+  }
+}
+</style>]]></content:encoded>
+    </item>
+  </channel>
+</rss>
