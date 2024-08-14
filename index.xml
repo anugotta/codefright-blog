@@ -366,5 +366,19 @@ Basic understanding of Android apps Android Studio installed on your computer A 
 }
 </style>]]></content:encoded>
     </item>
+    <item>
+      <title>Projects</title>
+      <link>https://www.codefright.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/projects/</guid>
+      <description>Here are some of the GitHub projects I&amp;rsquo;ve worked on:
+FlipTimerView - FlipTimerView library for Android developed in Kotlin. http_cyclic_mocks - A Simple and lightweight Dart library for mocking/overriding HTTP responses with Dio. In this library you can add multiple responses for a single route/api endpoint.. </description>
+      <content:encoded><![CDATA[<p>Here are some of the GitHub projects I&rsquo;ve worked on:</p>
+<ol>
+<li><strong><a href="https://github.com/anugotta/FlipTimerView">FlipTimerView</a></strong> - FlipTimerView library for Android developed in Kotlin.</li>
+<li><strong><a href="https://github.com/anugotta/http_cyclic_mocks">http_cyclic_mocks</a></strong> - A Simple and lightweight Dart library for mocking/overriding HTTP responses with Dio. In this library you can add multiple responses for a single route/api endpoint..</li>
+</ol>
+]]></content:encoded>
+    </item>
   </channel>
 </rss>

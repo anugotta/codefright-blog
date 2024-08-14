@@ -100,5 +100,9 @@
     <loc>https://www.codefright.com/archives/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/projects/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
