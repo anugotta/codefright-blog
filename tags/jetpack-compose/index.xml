@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Jetpack Compose on codeFright</title>
+    <link>https://www.codefright.com/tags/jetpack-compose/</link>
+    <description>Recent content in Jetpack Compose on codeFright</description>
+    <image>
+      <title>codeFright</title>
+      <url>https://www.codefright.com/static/logo.png</url>
+      <link>https://www.codefright.com/static/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en-us</language>
+    <copyright>2025 codeFright</copyright>
+    <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.codefright.com/tags/jetpack-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lets Explore Jetpack Compose!</title>
+      <link>https://www.codefright.com/posts/jetpack-compose/</link>
+      <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/posts/jetpack-compose/</guid>
+      <description>Hey! Let&amp;rsquo;s explore Jetpack Compose and see how it makes Android UI development more enjoyable.
+What is Jetpack Compose? Compose is just a different way to build your app&amp;rsquo;s UI. Instead of writing XML layouts and then manipulating them with code, you write Kotlin functions that describe your UI. It&amp;rsquo;s that simple.
+Getting Started First, add these to your build.gradle:
+dependencies { implementation &amp;#34;androidx.compose.ui:ui:1.5.4&amp;#34; implementation &amp;#34;androidx.compose.material:material:1.5.4&amp;#34; implementation &amp;#34;androidx.compose.ui:ui-tooling-preview:1.5.4&amp;#34; } Your First Composable Let&amp;rsquo;s write something simple:</description>
+      <content:encoded><![CDATA[<p>Hey! Let&rsquo;s explore Jetpack Compose and see how it makes Android UI development more enjoyable.</p>
+<h2 id="what-is-jetpack-compose">What is Jetpack Compose?</h2>
+<p>Compose is just a different way to build your app&rsquo;s UI. Instead of writing XML layouts and then manipulating them with code, you write Kotlin functions that describe your UI. It&rsquo;s that simple.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>First, add these to your <code>build.gradle</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.compose.ui:ui:1.5.4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.compose.material:material:1.5.4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.compose.ui:ui-tooling-preview:1.5.4&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="your-first-composable">Your First Composable</h2>
+<p>Let&rsquo;s write something simple:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">WelcomeText</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Hey </span><span class="si">$name</span><span class="s2">, welcome to Compose!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>That&rsquo;s it! The <code>@Composable</code> annotation tells Compose that this function outputs UI elements. You can use it like any regular Kotlin function.</p>
+<h2 id="state-making-things-interactive">State: Making Things Interactive</h2>
+<p>State in Compose is just data that can change over time. When it changes, Compose updates your UI automatically:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">count</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">Column</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;You clicked </span><span class="si">$count</span><span class="s2"> times&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="n">count</span><span class="o">++</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Click me&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="modifiers-styling-your-ui">Modifiers: Styling Your UI</h2>
+<p>Modifiers are like CSS for your composables. They let you change how things look and behave:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">StyledButton</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">onClick</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Unit</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Button</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">onClick</span> <span class="p">=</span> <span class="n">onClick</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">fillMaxWidth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">height</span><span class="p">(</span><span class="m">48.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="common-gotchas-to-watch-out-for">Common Gotchas to Watch Out For</h2>
+<ol>
+<li><strong>State Reset</strong>: Don&rsquo;t declare state outside composable functions:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T do this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">var</span> <span class="py">count</span> <span class="p">=</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="c1">// Will reset on recomposition
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// DO this instead
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">var</span> <span class="py">count</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Wrong Thread</strong>: UI updates must happen on the main thread:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T do this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">key1</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// UI updates here will crash
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// DO this instead
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">key1</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Do background work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Update UI on main thread
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><h2 id="real-world-example-a-user-card">Real World Example: A User Card</h2>
+<p>Here&rsquo;s how you might build a user profile card:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">UserCard</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Card</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">fillMaxWidth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Row</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="n">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">verticalAlignment</span> <span class="p">=</span> <span class="nc">Alignment</span><span class="p">.</span><span class="n">CenterVertically</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Avatar
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">AsyncImage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">model</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">avatarUrl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">contentDescription</span> <span class="p">=</span> <span class="s2">&#34;Profile picture&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">modifier</span> <span class="p">=</span> <span class="n">Modifier</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="m">50.</span><span class="n">dp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">.</span><span class="n">clip</span><span class="p">(</span><span class="n">CircleShape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">Spacer</span><span class="p">(</span><span class="nc">Modifier</span><span class="p">.</span><span class="n">width</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// User info
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Column</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">text</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">subtitle1</span>
+</span></span><span class="line"><span class="cl">                <span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">text</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">body2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">onSurface</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">alpha</span> <span class="p">=</span> <span class="m">0.6f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="why-use-compose">Why Use Compose?</h2>
+<ol>
+<li><strong>Less Code</strong>: No more XML layouts or view binding</li>
+<li><strong>Preview Support</strong>: See your UI changes instantly in Android Studio</li>
+<li><strong>Reusable Components</strong>: Easy to create and share UI components</li>
+<li><strong>State Management</strong>: Automatic UI updates when data changes</li>
+</ol>
+<h2 id="useful-tips">Useful Tips</h2>
+<ol>
+<li>Break down large composables into smaller ones</li>
+<li>Use previews for quick iteration</li>
+<li>Keep state at the appropriate level</li>
+<li>Use appropriate scopes for side effects</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Compose might feel different at first, but it makes UI development much more straightforward once you get used to it. Start with small components, understand how state works, and you&rsquo;ll be building complex UIs in no time.</p>
+<p>Don&rsquo;t forget to check out my other articles!</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

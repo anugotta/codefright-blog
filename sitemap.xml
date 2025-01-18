@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.codefright.com/tags/android/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.codefright.com/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/tags/jetpack-compose/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/tags/kotlin/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/posts/jetpack-compose/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/posts/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/tags/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/tags/ui-development/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -18,21 +48,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.codefright.com/posts/custom-views/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/kotlin/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/</loc>
     <lastmod>2024-12-18T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
