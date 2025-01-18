@@ -15,21 +15,20 @@
     <lastBuildDate>Wed, 18 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.codefright.com/tags/custom-views/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Custom Views in Android: Because Stock Widgets Are Too Mainstream</title>
+      <title>Guide to Custom Views in Android</title>
       <link>https://www.codefright.com/posts/custom-views/</link>
       <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/custom-views/</guid>
-      <description>Remember that time you needed a widget that Android doesn&amp;rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite caffeinated beverage, because we&amp;rsquo;re about to dive into the world of custom views!
+      <description>Remember that time you needed a widget that Android doesn&amp;rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite beverage, because we&amp;rsquo;re about to dive into the world of custom views!
 Why Create Custom Views? Sometimes the standard Android widgets just don&amp;rsquo;t cut it. Maybe you need:
-A special animation effect A unique user interaction That perfect design your UI/UX team dreamed up To show off to your coworkers (hey, we&amp;rsquo;ve all been there) The Basics: Anatomy of a Custom View Here&amp;rsquo;s a simple custom view that draws a circle that changes color when touched:</description>
-      <content:encoded><![CDATA[<p>Remember that time you needed a widget that Android doesn&rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite caffeinated beverage, because we&rsquo;re about to dive into the world of custom views!</p>
+A special animation effect A unique user interaction That perfect design your UI/UX team dreamed up The Basics: Anatomy of a Custom View Here&amp;rsquo;s a simple custom view that draws a circle that changes color when touched:</description>
+      <content:encoded><![CDATA[<p>Remember that time you needed a widget that Android doesn&rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite beverage, because we&rsquo;re about to dive into the world of custom views!</p>
 <h2 id="why-create-custom-views">Why Create Custom Views?</h2>
 <p>Sometimes the standard Android widgets just don&rsquo;t cut it. Maybe you need:</p>
 <ul>
 <li>A special animation effect</li>
 <li>A unique user interaction</li>
 <li>That perfect design your UI/UX team dreamed up</li>
-<li>To show off to your coworkers (hey, we&rsquo;ve all been there)</li>
 </ul>
 <h2 id="the-basics-anatomy-of-a-custom-view">The Basics: Anatomy of a Custom View</h2>
 <p>Here&rsquo;s a simple custom view that draws a circle that changes color when touched:</p>
@@ -76,15 +75,69 @@ A special animation effect A unique user interaction That perfect design your UI
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="n">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="making-it-configurable">Making It Configurable</h2>
-<p>Nobody likes hardcoded values. Let&rsquo;s make our view configurable through XML:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Add these at the top of your class
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">var</span> <span class="py">circleRadius</span> <span class="p">=</span> <span class="m">0f</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">var</span> <span class="py">defaultColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">BLUE</span>
+</span></span></code></pre></div><h2 id="understanding-the-view-lifecycle">Understanding the View Lifecycle</h2>
+<h3 id="measurement-and-layout">Measurement and Layout</h3>
+<p>The view lifecycle is crucial for proper rendering. Here&rsquo;s how to handle measurement and layout:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onMeasure</span><span class="p">(</span><span class="n">widthMeasureSpec</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">heightMeasureSpec</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Calculate the ideal size of the view based on content
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">desiredWidth</span> <span class="p">=</span> <span class="n">suggestedMinimumWidth</span> <span class="p">+</span> <span class="n">paddingLeft</span> <span class="p">+</span> <span class="n">paddingRight</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">desiredHeight</span> <span class="p">=</span> <span class="n">suggestedMinimumHeight</span> <span class="p">+</span> <span class="n">paddingTop</span> <span class="p">+</span> <span class="n">paddingBottom</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">init</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Parse attributes
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">context</span><span class="p">.</span><span class="n">theme</span><span class="p">.</span><span class="n">obtainStyledAttributes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Reconcile size with any constraints from the parent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">finalWidth</span> <span class="p">=</span> <span class="n">resolveSize</span><span class="p">(</span><span class="n">desiredWidth</span><span class="p">,</span> <span class="n">widthMeasureSpec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">finalHeight</span> <span class="p">=</span> <span class="n">resolveSize</span><span class="p">(</span><span class="n">desiredHeight</span><span class="p">,</span> <span class="n">heightMeasureSpec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Must call this to save the measurements
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">setMeasuredDimension</span><span class="p">(</span><span class="n">finalWidth</span><span class="p">,</span> <span class="n">finalHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onSizeChanged</span><span class="p">(</span><span class="n">w</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">oldw</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">oldh</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onSizeChanged</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">oldw</span><span class="p">,</span> <span class="n">oldh</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Update size-dependent calculations
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">circleRadius</span> <span class="p">=</span> <span class="n">min</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="p">/</span> <span class="m">3f</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Update drawing bounds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">rect</span><span class="p">.</span><span class="k">set</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">paddingLeft</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">paddingTop</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="n">w</span> <span class="p">-</span> <span class="n">paddingRight</span><span class="p">).</span><span class="n">toFloat</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="n">h</span> <span class="p">-</span> <span class="n">paddingBottom</span><span class="p">).</span><span class="n">toFloat</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="state-management">State Management</h3>
+<p>Always handle configuration changes and state restoration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onSaveInstanceState</span><span class="p">():</span> <span class="n">Parcelable</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">superState</span> <span class="p">=</span> <span class="k">super</span><span class="p">.</span><span class="n">onSaveInstanceState</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Bundle</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">putParcelable</span><span class="p">(</span><span class="s2">&#34;superState&#34;</span><span class="p">,</span> <span class="n">superState</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">putInt</span><span class="p">(</span><span class="s2">&#34;currentColor&#34;</span><span class="p">,</span> <span class="n">currentColor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onRestoreInstanceState</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">Parcelable</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">bundle</span> <span class="p">=</span> <span class="n">state</span> <span class="k">as</span> <span class="n">Bundle</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onRestoreInstanceState</span><span class="p">(</span><span class="n">bundle</span><span class="p">.</span><span class="n">getParcelable</span><span class="p">(</span><span class="s2">&#34;superState&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentColor</span> <span class="p">=</span> <span class="n">bundle</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&#34;currentColor&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">invalidate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="making-it-configurable">Making It Configurable</h2>
+<p>Let&rsquo;s make our view configurable through XML with various attribute types:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;resources&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;declare-styleable</span> <span class="na">name=</span><span class="s">&#34;ColorChangeCircleView&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;circleRadius&#34;</span> <span class="na">format=</span><span class="s">&#34;dimension&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;defaultColor&#34;</span> <span class="na">format=</span><span class="s">&#34;color&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;shapeStyle&#34;</span> <span class="na">format=</span><span class="s">&#34;enum&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;enum</span> <span class="na">name=</span><span class="s">&#34;filled&#34;</span> <span class="na">value=</span><span class="s">&#34;0&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;enum</span> <span class="na">name=</span><span class="s">&#34;stroke&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/attr&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;strokeWidth&#34;</span> <span class="na">format=</span><span class="s">&#34;dimension&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;enableAnimation&#34;</span> <span class="na">format=</span><span class="s">&#34;boolean&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/declare-styleable&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resources&gt;</span>
+</span></span></code></pre></div><p>And the corresponding Kotlin implementation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">.</span><span class="n">theme</span><span class="p">.</span><span class="n">obtainStyledAttributes</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">attrs</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="m">0</span><span class="p">,</span> <span class="m">0</span>
@@ -98,23 +151,81 @@ A special animation effect A unique user interaction That perfect design your UI
 </span></span><span class="line"><span class="cl">                <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView_defaultColor</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                <span class="nc">Color</span><span class="p">.</span><span class="n">BLUE</span>
 </span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">shapeStyle</span> <span class="p">=</span> <span class="n">getInt</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView_shapeStyle</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">SHAPE_STYLE_FILLED</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">strokeWidth</span> <span class="p">=</span> <span class="n">getDimension</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView_strokeWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resources</span><span class="p">.</span><span class="n">getDimension</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">dimen</span><span class="p">.</span><span class="n">default_stroke_width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">enableAnimation</span> <span class="p">=</span> <span class="n">getBoolean</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView_enableAnimation</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="k">false</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">recycle</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="n">currentColor</span> <span class="p">=</span> <span class="n">defaultColor</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>And the corresponding <code>attrs.xml</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;resources&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;declare-styleable</span> <span class="na">name=</span><span class="s">&#34;ColorChangeCircleView&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;circleRadius&#34;</span> <span class="na">format=</span><span class="s">&#34;dimension&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;defaultColor&#34;</span> <span class="na">format=</span><span class="s">&#34;color&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/declare-styleable&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resources&gt;</span>
-</span></span></code></pre></div><h2 id="performance-tips-because-nobody-likes-janky-uis">Performance Tips (Because Nobody Likes Janky UIs)</h2>
+</span></span></code></pre></div><h2 id="advanced-touch-handling">Advanced Touch Handling</h2>
+<p>Implement sophisticated touch interactions using GestureDetector:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ColorChangeCircleView</span> <span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">gestureDetector</span> <span class="p">=</span> <span class="n">GestureDetectorCompat</span><span class="p">(</span><span class="n">context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">object</span> <span class="err">: </span><span class="nc">GestureDetector</span><span class="p">.</span><span class="n">SimpleOnGestureListener</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">override</span> <span class="k">fun</span> <span class="nf">onDown</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">MotionEvent</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">=</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">override</span> <span class="k">fun</span> <span class="nf">onSingleTapUp</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">MotionEvent</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">changeColor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">override</span> <span class="k">fun</span> <span class="nf">onFling</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">e1</span><span class="p">:</span> <span class="n">MotionEvent</span><span class="p">?,</span> <span class="n">e2</span><span class="p">:</span> <span class="n">MotionEvent</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">velocityX</span><span class="p">:</span> <span class="n">Float</span><span class="p">,</span> <span class="n">velocityY</span><span class="p">:</span> <span class="n">Float</span>
+</span></span><span class="line"><span class="cl">            <span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">startSpinAnimation</span><span class="p">(</span><span class="n">velocityX</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">MotionEvent</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">gestureDetector</span><span class="p">.</span><span class="n">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">||</span> <span class="k">super</span><span class="p">.</span><span class="n">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="animation-integration">Animation Integration</h2>
+<p>Add smooth animations to your custom view:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">fun</span> <span class="nf">startColorAnimation</span><span class="p">(</span><span class="n">newColor</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">ValueAnimator</span><span class="p">.</span><span class="n">ofArgb</span><span class="p">(</span><span class="n">currentColor</span><span class="p">,</span> <span class="n">newColor</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">duration</span> <span class="p">=</span> <span class="m">300</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interpolator</span> <span class="p">=</span> <span class="n">FastOutSlowInInterpolator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">addUpdateListener</span> <span class="p">{</span> <span class="n">animator</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">currentColor</span> <span class="p">=</span> <span class="n">animator</span><span class="p">.</span><span class="n">animatedValue</span> <span class="k">as</span> <span class="n">Int</span>
+</span></span><span class="line"><span class="cl">            <span class="n">invalidate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="accessibility-considerations">Accessibility Considerations</h2>
+<p>Make your custom view accessible to all users:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Set content description
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">contentDescription</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">color_circle_description</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Enable accessibility events
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">importantForAccessibility</span> <span class="p">=</span> <span class="n">IMPORTANT_FOR_ACCESSIBILITY_YES</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onInitializeAccessibilityNodeInfo</span><span class="p">(</span><span class="n">info</span><span class="p">:</span> <span class="n">AccessibilityNodeInfo</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onInitializeAccessibilityNodeInfo</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">info</span><span class="p">.</span><span class="n">className</span> <span class="p">=</span> <span class="n">Button</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">.</span><span class="n">name</span>
+</span></span><span class="line"><span class="cl">    <span class="n">info</span><span class="p">.</span><span class="n">isClickable</span> <span class="p">=</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">    <span class="n">info</span><span class="p">.</span><span class="n">addAction</span><span class="p">(</span><span class="nc">AccessibilityNodeInfo</span><span class="p">.</span><span class="n">ACTION_CLICK</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="performance-tips">Performance Tips</h2>
 <ol>
-<li><strong>Avoid Object Creation in onDraw()</strong>:</li>
+<li><strong>Avoid Object Creation in onDraw()</strong></li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// BAD
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
@@ -128,9 +239,60 @@ A special animation effect A unique user interaction That perfect design your UI
 </span></span><span class="line"><span class="cl">    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><ol start="2">
-<li><strong>Use Hardware Acceleration</strong>:</li>
+<li><strong>Use Hardware Acceleration</strong></li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">android:hardwareAccelerated=&#34;true&#34;
+</span></span></code></pre></div><ol start="3">
+<li><strong>Optimize Invalidation</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Only invalidate the necessary area
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">invalidate</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Use post for thread-safe invalidation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">postInvalidate</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="debugging-tips">Debugging Tips</h2>
+<ol>
+<li>Debug draw mode:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">paint</span><span class="p">.</span><span class="n">style</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">Style</span><span class="p">.</span><span class="n">STROKE</span>
+</span></span><span class="line"><span class="cl">        <span class="n">paint</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">RED</span>
+</span></span><span class="line"><span class="cl">        <span class="n">canvas</span><span class="p">.</span><span class="n">drawRect</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">0f</span><span class="p">,</span> <span class="n">width</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span> <span class="n">height</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span> <span class="n">paint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>Log measurements:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onMeasure</span><span class="p">(</span><span class="n">widthMeasureSpec</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">heightMeasureSpec</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onMeasure</span><span class="p">(</span><span class="n">widthMeasureSpec</span><span class="p">,</span> <span class="n">heightMeasureSpec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">widthMode</span> <span class="p">=</span> <span class="nc">MeasureSpec</span><span class="p">.</span><span class="n">getMode</span><span class="p">(</span><span class="n">widthMeasureSpec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">widthSize</span> <span class="p">=</span> <span class="nc">MeasureSpec</span><span class="p">.</span><span class="n">getSize</span><span class="p">(</span><span class="n">widthMeasureSpec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&#34;Width Mode: </span><span class="si">${getModeString(widthMode)}</span><span class="s2">, Size: </span><span class="si">$widthSize</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="testing-custom-views">Testing Custom Views</h2>
+<p>Here&rsquo;s a basic test setup:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@RunWith</span><span class="p">(</span><span class="n">AndroidJUnit4</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ColorChangeCircleViewTest</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">lateinit</span> <span class="k">var</span> <span class="py">view</span><span class="p">:</span> <span class="n">ColorChangeCircleView</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@Before</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">view</span> <span class="p">=</span> <span class="n">ColorChangeCircleView</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nc">InstrumentationRegistry</span><span class="p">.</span><span class="n">getInstrumentation</span><span class="p">().</span><span class="n">targetContext</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">testColorChange</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">initialColor</span> <span class="p">=</span> <span class="n">view</span><span class="p">.</span><span class="n">getCurrentColor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">view</span><span class="p">.</span><span class="n">performClick</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">assertNotEquals</span><span class="p">(</span><span class="n">initialColor</span><span class="p">,</span> <span class="n">view</span><span class="p">.</span><span class="n">getCurrentColor</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="a-real-world-example-custom-progress-view">A Real-World Example: Custom Progress View</h2>
 <p>Here&rsquo;s a more practical example - a custom progress view that fills up like a battery:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BatteryProgressView</span> <span class="nd">@JvmOverloads</span> <span class="k">constructor</span><span class="p">(</span>
@@ -170,9 +332,15 @@ A special animation effect A unique user interaction That perfect design your UI
 </span></span><span class="line"><span class="cl">        <span class="n">canvas</span><span class="p">.</span><span class="n">drawRect</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+</span></span></code></pre></div><h2 id="resources-for-further-learning">Resources for Further Learning</h2>
+<ul>
+<li><a href="https://developer.android.com/develop/ui/views/layout/custom-views/create-view">Android Developer Documentation on Custom Views</a></li>
+<li><a href="https://source.android.com/devices/graphics/architecture">Android Graphics Architecture</a></li>
+<li><a href="https://material.io/design">Material Design Guidelines</a></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
 <p>Custom views are like cooking - start with the basic recipe, then add your own flavors. Don&rsquo;t be afraid to experiment, but always keep performance in mind. Your users (and the Android UI thread) will thank you!</p>
-<p>Stay tuned for more Android development adventures! Next time, we might tackle custom ViewGroups - because why stop at custom views when you can create entire custom layouts? 😈</p>
+<p>Stay tuned for more Android development articles!</p>
 ]]></content:encoded>
     </item>
   </channel>
