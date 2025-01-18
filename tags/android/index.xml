@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Android on codeFright</title>
+    <title>Android on &lt;/&gt; codeFright 🎃</title>
     <link>https://www.codefright.com/tags/android/</link>
-    <description>Recent content in Android on codeFright</description>
+    <description>Recent content in Android on &lt;/&gt; codeFright 🎃</description>
     <image>
-      <title>codeFright</title>
+      <title>&lt;/&gt; codeFright 🎃</title>
       <url>https://www.codefright.com/static/logo.png</url>
       <link>https://www.codefright.com/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
-    <copyright>2025 codeFright</copyright>
+    <copyright>2025 codeFright 👻</copyright>
     <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.codefright.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Lets Explore Jetpack Compose!</title>
+      <title>⚡ Lets Explore Jetpack Compose!</title>
       <link>https://www.codefright.com/posts/jetpack-compose/</link>
       <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/jetpack-compose/</guid>
@@ -155,7 +155,7 @@ dependencies { implementation &amp;#34;androidx.compose.ui:ui:1.5.4&amp;#34; imp
 ]]></content:encoded>
     </item>
     <item>
-      <title>Guide to Custom Views in Android</title>
+      <title>⚡ Guide to Custom Views in Android</title>
       <link>https://www.codefright.com/posts/custom-views/</link>
       <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/custom-views/</guid>
@@ -484,7 +484,7 @@ A special animation effect A unique user interaction That perfect design your UI
 ]]></content:encoded>
     </item>
     <item>
-      <title>Kotlin Coroutines for the Beginners</title>
+      <title>⚡ Kotlin Coroutines for the Beginners</title>
       <link>https://www.codefright.com/posts/kotlin-coroutines/</link>
       <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/kotlin-coroutines/</guid>
