@@ -813,15 +813,6 @@ Successfully developed and published over 25 apps on PlayStore, including apps w
 <li>KMM (Beginner)</li>
 <li>Python (Intermediate)</li>
 </ul>
-<h3 id="technical-skills">Technical Skills</h3>
-<ul>
-<li><strong>Architecture:</strong> MVVM, Clean Architecture</li>
-<li><strong>Frameworks / Tools:</strong> RxJava, Coroutines &amp; Flows, Dagger/Hilt, Jenkins, Flutter Isolates, Jetpack Compose</li>
-<li><strong>Database:</strong> Realm, Room, SQLite</li>
-<li><strong>Version Control:</strong> Github, Bitbucket</li>
-<li><strong>Project Management:</strong> JIRA</li>
-<li><strong>Test Cases:</strong> JUnit, Mockito, Espresso</li>
-</ul>
 <h2 id="links">Links</h2>
 <ul>
 <li><a href="https://stackoverflow.com/users/2369140/asp">Stack Overflow</a></li>
@@ -830,7 +821,7 @@ Successfully developed and published over 25 apps on PlayStore, including apps w
 <li><a href="https://twitter.com/as_pillai">Twitter</a></li>
 <li><a href="https://codefright.com">Blog</a></li>
 </ul>
-<h2 id="notable-projects">Notable Projects</h2>
+<h2 id="notable-contributions">Notable Contributions</h2>
 <h3 id="wellthy-care-wellthy-therapeutics">WELLTHY CARE (WELLTHY THERAPEUTICS)</h3>
 <p><a href="https://play.google.com/store/apps/details?id=wellthy.care&amp;hl=en_GB">View on Play Store</a></p>
 <p>Wellthy Care is the digital health coach that will help you manage diabetes, chronic kidney disease (CKD) and other such chronic conditions.</p>
@@ -849,6 +840,7 @@ Successfully developed and published over 25 apps on PlayStore, including apps w
 <ul>
 <li>Technologies used: Java, SQLite, Retrofit, C# (for Windows app)</li>
 </ul>
+<p>And Many More!</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -857,10 +849,29 @@ Successfully developed and published over 25 apps on PlayStore, including apps w
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/projects/</guid>
       <description>Open source projects and contributions in Android, Kotlin, and Flutter</description>
-      <content:encoded><![CDATA[<ol>
-<li><strong><a href="https://github.com/anugotta/FlipTimerView">FlipTimerView</a></strong> - FlipTimerView library for Android developed in Kotlin.</li>
-<li><strong><a href="https://github.com/anugotta/http_cyclic_mocks">http_cyclic_mocks</a></strong> - A Simple and lightweight Dart library for mocking/overriding HTTP responses with Dio. In this library you can add multiple responses for a single route/api endpoint..</li>
-</ol>
+      <content:encoded><![CDATA[<h2 id="library-projects">Library Projects</h2>
+<h3 id="fliptimerviewhttpsgithubcomanugottafliptimerview"><a href="https://github.com/anugotta/FlipTimerView">FlipTimerView</a></h3>
+<p>A customizable flip animation timer library for Android, developed in Kotlin.</p>
+<ul>
+<li>Simple flip animation with customizable duration</li>
+<li>Support for days, hours, minutes and seconds</li>
+</ul>
+<h3 id="http_cyclic_mockshttpsgithubcomanugottahttp_cyclic_mocks"><a href="https://github.com/anugotta/http_cyclic_mocks">http_cyclic_mocks</a></h3>
+<p>A lightweight Dart library for mocking HTTP responses with Dio. Mock Multiple Responses for single route / endpoint.</p>
+<ul>
+<li>Support for multiple responses per endpoint</li>
+<li>Cyclic response patterns</li>
+<li>Easy integration with existing Dio setup</li>
+<li>Perfect for testing and development</li>
+</ul>
+<hr>
+<h2 id="hobby-projects">Hobby Projects</h2>
+<h3 id="kinderscripthttpsgithubcomanugottakinderscript"><a href="https://github.com/anugotta/KinderScript">KinderScript</a></h3>
+<p>[Work in Progress] A simple terminal based child-friendly programming language for learning coding basics. Developed completely in Kotlin.</p>
+<ul>
+<li>Simple syntax for kids</li>
+<li>Built for educational purposes</li>
+</ul>
 ]]></content:encoded>
     </item>
   </channel>
