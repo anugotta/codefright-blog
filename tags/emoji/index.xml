@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Emoji on codeFright</title>
-    <link>https://www.codefright.com/tags/emoji/</link>
+    <link>http://localhost:1313/tags/emoji/</link>
     <description>Recent content in Emoji on codeFright</description>
     <image>
       <title>codeFright</title>
-      <url>https://www.codefright.com/static/logo.png</url>
-      <link>https://www.codefright.com/static/logo.png</link>
+      <url>http://localhost:1313/static/logo.png</url>
+      <link>http://localhost:1313/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2024 codeFright</copyright>
     <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.codefright.com/tags/emoji/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/emoji/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Emoji Support</title>
-      <link>https://www.codefright.com/posts/emoji-support/</link>
+      <link>http://localhost:1313/posts/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/posts/emoji-support/</guid>
+      <guid>http://localhost:1313/posts/emoji-support/</guid>
       <description>Guide to emoji usage in Hugo</description>
       <content:encoded><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>
 <p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>

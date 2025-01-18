@@ -2,79 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on codeFright</title>
-    <link>https://www.codefright.com/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on codeFright</description>
     <image>
       <title>codeFright</title>
-      <url>https://www.codefright.com/static/logo.png</url>
-      <link>https://www.codefright.com/static/logo.png</link>
+      <url>http://localhost:1313/static/logo.png</url>
+      <link>http://localhost:1313/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
-    <copyright>2024 codeFright</copyright>
-    <lastBuildDate>Wed, 29 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.codefright.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2025 codeFright</copyright>
+    <lastBuildDate>Wed, 18 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
-      <link>https://www.codefright.com/tags/android/</link>
+      <link>http://localhost:1313/tags/android/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/android/</guid>
+      <guid>http://localhost:1313/tags/android/</guid>
       <description></description>
     </item>
     <item>
-      <title>APK</title>
-      <link>https://www.codefright.com/tags/apk/</link>
+      <title>Custom Views</title>
+      <link>http://localhost:1313/tags/custom-views/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/apk/</guid>
+      <guid>http://localhost:1313/tags/custom-views/</guid>
       <description></description>
     </item>
     <item>
-      <title>Beginners</title>
-      <link>https://www.codefright.com/tags/beginners/</link>
+      <title>Kotlin</title>
+      <link>http://localhost:1313/tags/kotlin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/beginners/</guid>
+      <guid>http://localhost:1313/tags/kotlin/</guid>
       <description></description>
     </item>
     <item>
-      <title>Reverse Engineering</title>
-      <link>https://www.codefright.com/tags/reverse-engineering/</link>
+      <title>UI</title>
+      <link>http://localhost:1313/tags/ui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/reverse-engineering/</guid>
+      <guid>http://localhost:1313/tags/ui/</guid>
       <description></description>
     </item>
     <item>
-      <title>Css</title>
-      <link>https://www.codefright.com/tags/css/</link>
+      <title>Async Programming</title>
+      <link>http://localhost:1313/tags/async-programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/css/</guid>
+      <guid>http://localhost:1313/tags/async-programming/</guid>
       <description></description>
     </item>
     <item>
-      <title>Html</title>
-      <link>https://www.codefright.com/tags/html/</link>
+      <title>Coroutines</title>
+      <link>http://localhost:1313/tags/coroutines/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/html/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Markdown</title>
-      <link>https://www.codefright.com/tags/markdown/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/markdown/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Themes</title>
-      <link>https://www.codefright.com/tags/themes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/themes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Emoji</title>
-      <link>https://www.codefright.com/tags/emoji/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/emoji/</guid>
+      <guid>http://localhost:1313/tags/coroutines/</guid>
       <description></description>
     </item>
   </channel>

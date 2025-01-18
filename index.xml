@@ -2,379 +2,278 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>codeFright</title>
-    <link>https://www.codefright.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on codeFright</description>
     <image>
       <title>codeFright</title>
-      <url>https://www.codefright.com/static/logo.png</url>
-      <link>https://www.codefright.com/static/logo.png</link>
+      <url>http://localhost:1313/static/logo.png</url>
+      <link>http://localhost:1313/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
-    <copyright>2024 codeFright</copyright>
-    <lastBuildDate>Wed, 29 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.codefright.com/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2025 codeFright</copyright>
+    <lastBuildDate>Wed, 18 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Reverse Engineering an Android APK: A Step-by-Step Guide for Dimwits</title>
-      <link>https://www.codefright.com/posts/reverse-engg/</link>
-      <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/posts/reverse-engg/</guid>
-      <description>Are you curious about what&amp;rsquo;s inside your favorite Android apps? Do you want to peek under the hood and understand how they work? Welcome, fellow dimwit! In this guide, we&amp;rsquo;ll embark on a thrilling journey into the world of reverse engineering Android APKs, step by step.
-Prerequisites Before we begin, make sure you have the following:
-Basic understanding of Android apps Android Studio installed on your computer A decompiler tool (we&amp;rsquo;ll use JADX) Patience and a curious mind!</description>
-      <content:encoded><![CDATA[<p>Are you curious about what&rsquo;s inside your favorite Android apps? Do you want to peek under the hood and understand how they work? Welcome, fellow dimwit! In this guide, we&rsquo;ll embark on a thrilling journey into the world of reverse engineering Android APKs, step by step.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>Before we begin, make sure you have the following:</p>
+      <title>Custom Views in Android: Because Stock Widgets Are Too Mainstream</title>
+      <link>http://localhost:1313/posts/custom-views/</link>
+      <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/custom-views/</guid>
+      <description>Remember that time you needed a widget that Android doesn&amp;rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite caffeinated beverage, because we&amp;rsquo;re about to dive into the world of custom views!
+Why Create Custom Views? Sometimes the standard Android widgets just don&amp;rsquo;t cut it. Maybe you need:
+A special animation effect A unique user interaction That perfect design your UI/UX team dreamed up To show off to your coworkers (hey, we&amp;rsquo;ve all been there) The Basics: Anatomy of a Custom View Here&amp;rsquo;s a simple custom view that draws a circle that changes color when touched:</description>
+      <content:encoded><![CDATA[<p>Remember that time you needed a widget that Android doesn&rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite caffeinated beverage, because we&rsquo;re about to dive into the world of custom views!</p>
+<h2 id="why-create-custom-views">Why Create Custom Views?</h2>
+<p>Sometimes the standard Android widgets just don&rsquo;t cut it. Maybe you need:</p>
 <ul>
-<li>Basic understanding of Android apps</li>
-<li>Android Studio installed on your computer</li>
-<li>A decompiler tool (we&rsquo;ll use JADX)</li>
-<li>Patience and a curious mind!</li>
+<li>A special animation effect</li>
+<li>A unique user interaction</li>
+<li>That perfect design your UI/UX team dreamed up</li>
+<li>To show off to your coworkers (hey, we&rsquo;ve all been there)</li>
 </ul>
-<h2 id="step-1-obtain-the-apk">Step 1: Obtain the APK</h2>
-<p>The first step is to obtain the APK file of the app you want to reverse engineer. You can download APKs from various sources or extract them from your own device using tools like ADB (Android Debug Bridge).</p>
-<h2 id="step-2-setting-up-android-studio">Step 2: Setting up Android Studio</h2>
-<p>If you haven&rsquo;t already, install Android Studio. We&rsquo;ll use it to set up a basic project for viewing the decompiled code.</p>
-<h2 id="step-3-decompiling-the-apk">Step 3: Decompiling the APK</h2>
-<p>Next, we&rsquo;ll use JADX, a powerful decompiler tool, to decompile the APK and view its Java code. Simply drag and drop the APK file into JADX, and it will decompile the code for you.</p>
-<h2 id="step-4-analyzing-the-decompiled-code">Step 4: Analyzing the Decompiled Code</h2>
-<p>Now comes the fun part! Dive into the decompiled code and start exploring. Look for interesting classes, methods, and resources. Try to understand how different parts of the app function together.</p>
-<h2 id="step-5-modifying-and-experimenting">Step 5: Modifying and Experimenting</h2>
-<p>Feeling adventurous? Experiment with the code! Make small changes and see how they affect the app&rsquo;s behavior. But remember, always do this in a controlled environment, preferably on a test device or emulator.</p>
-<h2 id="step-6-building-your-own-understanding">Step 6: Building Your Own Understanding</h2>
-<p>As you explore the decompiled code, take notes and document your findings. Building your understanding of how Android apps work will not only enhance your reverse engineering skills but also deepen your overall knowledge of mobile development.</p>
-<h2 id="step-7-ethical-considerations">Step 7: Ethical Considerations</h2>
-<p>It&rsquo;s crucial to remember the ethical implications of reverse engineering. Respect the developer&rsquo;s intellectual property rights and only use your newfound knowledge for learning purposes. Avoid reverse engineering apps with malicious intent or for illegal activities.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Congratulations, dimwit! You&rsquo;ve successfully embarked on a journey into the fascinating world of reverse engineering Android APKs. Remember, this is just the beginning. Keep exploring, learning, and pushing the boundaries of your curiosity. Happy hacking!</p>
-<p>Stay tuned for more exciting adventures in the world of tech on [Your Blog Name]!</p>
+<h2 id="the-basics-anatomy-of-a-custom-view">The Basics: Anatomy of a Custom View</h2>
+<p>Here&rsquo;s a simple custom view that draws a circle that changes color when touched:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ColorChangeCircleView</span> <span class="nd">@JvmOverloads</span> <span class="k">constructor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">attrs</span><span class="p">:</span> <span class="n">AttributeSet</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">defStyleAttr</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">:</span> <span class="n">View</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">defStyleAttr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">(</span><span class="nc">Paint</span><span class="p">.</span><span class="n">ANTI_ALIAS_FLAG</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">var</span> <span class="py">currentColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">BLUE</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Enable touch events
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">isClickable</span> <span class="p">=</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Get the center and radius
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">centerX</span> <span class="p">=</span> <span class="n">width</span> <span class="p">/</span> <span class="m">2f</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">centerY</span> <span class="p">=</span> <span class="n">height</span> <span class="p">/</span> <span class="m">2f</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">radius</span> <span class="p">=</span> <span class="n">min</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="p">/</span> <span class="m">3f</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Draw the circle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">paint</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="n">currentColor</span>
+</span></span><span class="line"><span class="cl">        <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="n">centerX</span><span class="p">,</span> <span class="n">centerY</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">MotionEvent</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">when</span> <span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">action</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nc">MotionEvent</span><span class="p">.</span><span class="n">ACTION_DOWN</span> <span class="o">-&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// Change color randomly
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">currentColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">rgb</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="nc">Random</span><span class="p">.</span><span class="n">nextInt</span><span class="p">(</span><span class="m">256</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="nc">Random</span><span class="p">.</span><span class="n">nextInt</span><span class="p">(</span><span class="m">256</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="nc">Random</span><span class="p">.</span><span class="n">nextInt</span><span class="p">(</span><span class="m">256</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">invalidate</span><span class="p">()</span> <span class="c1">// Redraw the view
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">return</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="n">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="making-it-configurable">Making It Configurable</h2>
+<p>Nobody likes hardcoded values. Let&rsquo;s make our view configurable through XML:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Add these at the top of your class
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">var</span> <span class="py">circleRadius</span> <span class="p">=</span> <span class="m">0f</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">var</span> <span class="py">defaultColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">BLUE</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Parse attributes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">context</span><span class="p">.</span><span class="n">theme</span><span class="p">.</span><span class="n">obtainStyledAttributes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attrs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="m">0</span><span class="p">,</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">circleRadius</span> <span class="p">=</span> <span class="n">getDimension</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView_circleRadius</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">resources</span><span class="p">.</span><span class="n">getDimension</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">dimen</span><span class="p">.</span><span class="n">default_radius</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">defaultColor</span> <span class="p">=</span> <span class="n">getColor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">R</span><span class="p">.</span><span class="n">styleable</span><span class="p">.</span><span class="n">ColorChangeCircleView_defaultColor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">Color</span><span class="p">.</span><span class="n">BLUE</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">recycle</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentColor</span> <span class="p">=</span> <span class="n">defaultColor</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And the corresponding <code>attrs.xml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;resources&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;declare-styleable</span> <span class="na">name=</span><span class="s">&#34;ColorChangeCircleView&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;circleRadius&#34;</span> <span class="na">format=</span><span class="s">&#34;dimension&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&#34;defaultColor&#34;</span> <span class="na">format=</span><span class="s">&#34;color&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/declare-styleable&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resources&gt;</span>
+</span></span></code></pre></div><h2 id="performance-tips-because-nobody-likes-janky-uis">Performance Tips (Because Nobody Likes Janky UIs)</h2>
+<ol>
+<li><strong>Avoid Object Creation in onDraw()</strong>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// BAD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">()</span> <span class="c1">// Don&#39;t do this!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// GOOD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">()</span> <span class="c1">// Create once in initialization
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Use Hardware Acceleration</strong>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">android:hardwareAccelerated=&#34;true&#34;
+</span></span></code></pre></div><h2 id="a-real-world-example-custom-progress-view">A Real-World Example: Custom Progress View</h2>
+<p>Here&rsquo;s a more practical example - a custom progress view that fills up like a battery:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BatteryProgressView</span> <span class="nd">@JvmOverloads</span> <span class="k">constructor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">attrs</span><span class="p">:</span> <span class="n">AttributeSet</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">defStyleAttr</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">:</span> <span class="n">View</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">defStyleAttr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">var</span> <span class="py">progress</span> <span class="p">=</span> <span class="m">0f</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">(</span><span class="nc">Paint</span><span class="p">.</span><span class="n">ANTI_ALIAS_FLAG</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">rect</span> <span class="p">=</span> <span class="n">RectF</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">setProgress</span><span class="p">(</span><span class="k">value</span><span class="p">:</span> <span class="n">Float</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">progress</span> <span class="p">=</span> <span class="k">value</span><span class="p">.</span><span class="n">coerceIn</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">100f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">invalidate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Draw battery outline
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">paint</span><span class="p">.</span><span class="n">style</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">Style</span><span class="p">.</span><span class="n">STROKE</span>
+</span></span><span class="line"><span class="cl">        <span class="n">paint</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="n">GRAY</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rect</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">0f</span><span class="p">,</span> <span class="n">width</span><span class="p">.</span><span class="n">toFloat</span><span class="p">(),</span> <span class="n">height</span><span class="p">.</span><span class="n">toFloat</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">canvas</span><span class="p">.</span><span class="n">drawRect</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Draw battery level
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">paint</span><span class="p">.</span><span class="n">style</span> <span class="p">=</span> <span class="nc">Paint</span><span class="p">.</span><span class="nc">Style</span><span class="p">.</span><span class="n">FILL</span>
+</span></span><span class="line"><span class="cl">        <span class="n">paint</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="k">when</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">progress</span> <span class="p">&lt;</span> <span class="m">20f</span> <span class="o">-&gt;</span> <span class="nc">Color</span><span class="p">.</span><span class="n">RED</span>
+</span></span><span class="line"><span class="cl">            <span class="n">progress</span> <span class="p">&lt;</span> <span class="m">50f</span> <span class="o">-&gt;</span> <span class="nc">Color</span><span class="p">.</span><span class="n">YELLOW</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="o">-&gt;</span> <span class="nc">Color</span><span class="p">.</span><span class="n">GREEN</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">levelWidth</span> <span class="p">=</span> <span class="p">(</span><span class="n">width</span> <span class="p">*</span> <span class="p">(</span><span class="n">progress</span> <span class="p">/</span> <span class="m">100f</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rect</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="m">0f</span><span class="p">,</span> <span class="n">levelWidth</span><span class="p">,</span> <span class="n">height</span><span class="p">.</span><span class="n">toFloat</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">canvas</span><span class="p">.</span><span class="n">drawRect</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Custom views are like cooking - start with the basic recipe, then add your own flavors. Don&rsquo;t be afraid to experiment, but always keep performance in mind. Your users (and the Android UI thread) will thank you!</p>
+<p>Stay tuned for more Android development adventures! Next time, we might tackle custom ViewGroups - because why stop at custom views when you can create entire custom layouts? 😈</p>
 ]]></content:encoded>
     </item>
     <item>
-      <title>Self-hosting on a Raspberry Pi cluster</title>
-      <link>https://www.codefright.com/posts/raspberry-pi-cluster/</link>
-      <pubDate>Sat, 06 Apr 2024 12:13:43 -0700</pubDate>
-      <guid>https://www.codefright.com/posts/raspberry-pi-cluster/</guid>
-      <description>Moving all my personal websites to a Raspberry Pi cluster sitting in my home office</description>
-      <content:encoded><![CDATA[<p>This post is an overview of how I went off the grid – or, in other words, moved all my personal websites off Azure and onto a Raspberry Pi cluster sitting in my home office. This isn&rsquo;t exactly a tutorial blog post, but feel free to use this as a reference.</p>
-<h2 id="why-do-this-at-all">Why do this at all?</h2>
-<p>You might be wondering, &ldquo;Savannah, why do this? Didn&rsquo;t you used to work on Azure tooling full-time?&rdquo; To which I&rsquo;d reply, &ldquo;Yes, yes I did.&rdquo; But really, this isn&rsquo;t about criticizing Azure or any other major cloud service provider. I simply enjoy physical computing, like to experiment, and also no longer receive any free employee credits for Azure, so I thought, why not?</p>
-<h2 id="meet-arrakis">Meet Arrakis!</h2>
-<p>Alright, I might have had Dune on the brain when I built this, but Dune Part Two is literally a masterpiece, so can you blame me? My little rig consists of 3 Raspberry Pi 4Bs (each with 4 CPUs and 8 GB RAM), all running Raspberry Pi OS Lite (64-bit), which is a port of Debian Bullseye without a desktop environment. Each of these devices uses Power over Ethernet (PoE) for networking and power over a single cable per Pi. I&rsquo;ll delve into this a bit later, but it&rsquo;s worth noting that the cluster doesn&rsquo;t run Kubernetes; instead, it leverages Docker Swarm to create the cluster (it&rsquo;s literally 2 commands to configure everything – mind blown!).</p>
-<p><img loading="lazy" src="../cluster-1.png" alt="alt text"  />
-</p>
-<h3 id="materials-for-the-build">Materials for the build</h3>
-<p>I&rsquo;ll be candid – this wasn&rsquo;t cheap. Raspberry Pis are hot commodities, so it cost me a pretty penny to gather everything I needed for this build. I&rsquo;ll link what I bought, but do keep in mind that prices may vary. At the time of building, this set me back approximately $506.67 USD.</p>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Price (in USD)</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.amazon.com/gp/product/B07D5NM9ZG">C4Labs Cloudlet Case in Clear</a></td>
-<td>$99.08</td>
-<td>Though I&rsquo;m only building a 3 Pi cluster right now, this gives me some space to store the Switch or add additional Pis in the future</td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/gp/product/B076HZFY3F">TP-Link TL-SG1005P, 5 Port Gigabit PoE Switch</a></td>
-<td>$49.53</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/gp/product/B082ZLDMZ6">UCTRONICS PoE HAT for Raspberry Pi (3x)</a></td>
-<td>$21.99</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/gp/product/B00GBBSX92">1.5-ft Ethernet cables (6 pack)</a></td>
-<td>$16.99</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/gp/product/B0899VXM8F">Raspberry Pi 4 Model B 8GB (3x)</a></td>
-<td>$82.71</td>
-<td>Obviously, this is where I spent the most money.</td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/gp/product/B00M55C0NS">SanDisk Ultra 32GB Micro SD (3x)</a></td>
-<td>$8.99</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td>$506.67</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>That said, if you&rsquo;re following along, you may need a couple of other things depending on what you have lying around at home, like a memory card reader for imaging the SD cards. Thankfully, I had one built into my USB dock, so this was unnecessary.</p>
-<h2 id="setting-up-the-cluster">Setting up the cluster</h2>
-<h3 id="step-1-image-a-micro-sd-card-for-each-pi">Step 1: Image a micro SD card for each Pi</h3>
-<p>After assembling the cluster physically, it was time to sort out the software bits. First, I imaged each micro SD card with Raspberry Pi OS Lite using the <a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager utility</a>, and then I inserted each micro SD into each Pi. A vital step here is to remember to go into options and tick the box that allows you to configure SSH with a password before imaging the SD cards.</p>
-<h3 id="step-2-install-docker-">Step 2: Install Docker 🐳</h3>
-<p>Then, I waited for each of them to appear on my home network and grabbed their IP addresses and made note of which Pi had which IP address. After that, I ssh&rsquo;d into each one and <a href="https://docs.docker.com/engine/install/debian/">installed Docker</a> using the official release (which gets updated more frequently than Docker distributed via distros&hellip;heck yes, Moby 26 is out!). I had 3 different terminal tabs opened while I was working so I could switch between them quickly.</p>
-<h3 id="step-3-create-the-cluster-using-docker-swarm">Step 3: Create the cluster using Docker Swarm</h3>
-<p>I&rsquo;ll be honest – I initially planned to set up the cluster with Kubernetes via k3s, but boy howdy, that gave me so many problems right from the get-go. Also, it&rsquo;s a bit of a meme to <a href="https://twitter.com/dexhorthy/status/856639005462417409">host your blog on Kubernetes</a>, so I quickly changed my plan and decided to use Swarm instead. Setting this up was truly magical, save for one snag. Here&rsquo;s how it works:</p>
-<ul>
-<li>Choose one of your Pis to be your Swarm leader.</li>
-<li>Run <code>docker swarm init</code> in the Swarm leader&rsquo;s terminal.</li>
-<li>Copy the generated command and token (<code>docker swarm join</code>).</li>
-<li>Paste the <code>docker swarm join</code> command into the other Pi terminals.</li>
-<li>Boom! You have yourself a cluster ✨</li>
-</ul>
-<p>Seriously, it&rsquo;s that simple! You can validate that everything is working as expected using <code>docker node ls</code> on any of your nodes.
-<img loading="lazy" src="../docker-node-ls.png" alt="Output of docker node ls, with three nodes all in ready state"  />
-</p>
-<blockquote>
-<p>Note: I did run into one little snag with networking, where the default network of the cluster overlapped 1:1 with my home network. I discovered this much later when ingress was broken and I couldn&rsquo;t figure out why. Before moving on, it might be worth verifying that this is not the case. If it is, the fix is fairly simple. You&rsquo;ll just need to <a href="https://docs.docker.com/engine/swarm/networking/#customize-ingress">customize the ingress network</a>. Shout out to <a href="https://stackoverflow.com/questions/59007780/container-running-on-docker-swarm-not-accessible-from-outside/63405536#63405536">this StackOverflow post</a> for helping me debug this!</p>
-</blockquote>
-<h3 id="step-4-write-the-docker-composeyml-for-your-services">Step 4: Write the <code>docker-compose.yml</code> for your services</h3>
-<p>Time to get to defining our services! In this case, I had two websites I wanted to host: 1) my <a href="https://savannahostrowski.com">personal website</a> (where you&rsquo;re reading this post!) and 2) an <a href="https://getshreked.com">uber-professional website</a> that&rsquo;s an inside joke.</p>
-<p>If you&rsquo;re familiar with Docker, this part is quite straightforward. I had already pushed my website images up to Docker Hub, so this was a pretty quick operation. The only Swarm-specific thing I needed to do is to tell Docker that I had a custom network called <code>arrakis</code> and then make sure that my services connect to it.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">services:
-</span></span><span class="line"><span class="cl">  savannahdev:
-</span></span><span class="line"><span class="cl">    image: &#34;savannahostrowski/savannah.dev&#34;
-</span></span><span class="line"><span class="cl">    ports:
-</span></span><span class="line"><span class="cl">     - &#34;8080:80&#34;
-</span></span><span class="line"><span class="cl">    networks:
-</span></span><span class="line"><span class="cl">     - arrakis
-</span></span><span class="line"><span class="cl">    deploy:
-</span></span><span class="line"><span class="cl">     mode: replicated
-</span></span><span class="line"><span class="cl">     replicas: 3
-</span></span><span class="line"><span class="cl">  getshreked:
-</span></span><span class="line"><span class="cl">   image: &#34;savannahostrowski/getshreked&#34;
-</span></span><span class="line"><span class="cl">   ports:
-</span></span><span class="line"><span class="cl">     - &#34;8081:80&#34;
-</span></span><span class="line"><span class="cl">   networks:
-</span></span><span class="line"><span class="cl">     - arrakis
-</span></span><span class="line"><span class="cl">   deploy:
-</span></span><span class="line"><span class="cl">     mode: replicated
-</span></span><span class="line"><span class="cl">     replicas: 3
-</span></span><span class="line"><span class="cl">networks:
-</span></span><span class="line"><span class="cl">  arrakis: {}
-</span></span></code></pre></div><p>Deploying this Compose file is a single command using <code>docker stack deploy --compose-file docker-compose.yml arrakis</code> from the leader node. Once this command was run, I validated that the services were operational via <code>docker stack services arrakis</code>.</p>
-<p>At this point, you should be able to hit the endpoints on any one of the cluster node IPs and see your website!</p>
-<h3 id="step-5-set-up-cloudflared-as-a-service-in-the-cluster">Step 5: Set up <code>cloudflared</code> as a service in the cluster</h3>
-<p>The last bit here was to obfuscate my IP addresses and make this all accessible to the outside world via my chosen domains. If you thought the cluster setup was magic, just wait until you see how simple it was to set this bit up.</p>
-<p>Thanks to CloudFlare, I&rsquo;m able to do this all via <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Tunnels</a> – or, rather, a single Cloudflared tunnel in my case. This was really as easy as going to my CloudFlare dashboard, creating a tunnel, copying an installation command to paste into my leader node (<code>sudo cloudflared service install &lt;token&gt;</code>), creating another service in my <code>docker-compose.yml</code>, and then redeploying the stack (<code>docker stack deploy --compose-file docker-compose.yml arrakis</code>).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">services:
-</span></span><span class="line"><span class="cl">  savannahdev:
-</span></span><span class="line"><span class="cl">    image: &#34;savannahostrowski/savannah.dev&#34;
-</span></span><span class="line"><span class="cl">    ports:
-</span></span><span class="line"><span class="cl">     - &#34;8080:80&#34;
-</span></span><span class="line"><span class="cl">    networks:
-</span></span><span class="line"><span class="cl">     - arrakis
-</span></span><span class="line"><span class="cl">    deploy:
-</span></span><span class="line"><span class="cl">     mode: replicated
-</span></span><span class="line"><span class="cl">     replicas: 3
-</span></span><span class="line"><span class="cl">  getshreked:
-</span></span><span class="line"><span class="cl">   image: &#34;savannahostrowski/getshreked&#34;
-</span></span><span class="line"><span class="cl">   ports:
-</span></span><span class="line"><span class="cl">     - &#34;8081:80&#34;
-</span></span><span class="line"><span class="cl">   networks:
-</span></span><span class="line"><span class="cl">     - arrakis
-</span></span><span class="line"><span class="cl">   deploy:
-</span></span><span class="line"><span class="cl">     mode: replicated
-</span></span><span class="line"><span class="cl">     replicas: 3
-</span></span><span class="line"><span class="cl">  cloudflared:
-</span></span><span class="line"><span class="cl">   image: &#34;cloudflare/cloudflared&#34;
-</span></span><span class="line"><span class="cl">   command: &#34;tunnel --no-autoupdate run --token &lt;my-token-here&gt;&#34;
-</span></span><span class="line"><span class="cl">   deploy:
-</span></span><span class="line"><span class="cl">    restart_policy:
-</span></span><span class="line"><span class="cl">     condition: on-failure
-</span></span><span class="line"><span class="cl">    mode: replicated
-</span></span><span class="line"><span class="cl">    replicas: 3
-</span></span><span class="line"><span class="cl">   networks:
-</span></span><span class="line"><span class="cl">    - arrakis
-</span></span><span class="line"><span class="cl">networks:
-</span></span><span class="line"><span class="cl">  arrakis: {}
-</span></span></code></pre></div><p>The last bit here is to configure your public hostnames. In my case, I had one for each website I was deploying. What&rsquo;s really neat is that you just have to pass in the service <code>name:port</code> (where service name matches the Compose service name and port matches your port internal to the container) for it to all work.
-<img loading="lazy" src="../cloudflare-hostname.png" alt="Configuring a hostname for my personal website on Cloudflare"  />
-</p>
-<h2 id="bonus-set-up-tailscale-for-easy-access-to-my-cluster-nodes">Bonus: Set up Tailscale for easy access to my cluster nodes</h2>
-<p>This isn&rsquo;t required but I also took advantage of <a href="https://tailscale.com/">Tailscale</a>&rsquo;s free tier (up to 100 devices!) for easy access to my cluster nodes.</p>
-<p>And that&rsquo;s pretty much it! Hopefully you found this sort of fun - I sure did!</p>
+      <title>Kotlin Coroutines: A Guide for the Perpetually Confused</title>
+      <link>http://localhost:1313/posts/kotlin-coroutines/</link>
+      <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/kotlin-coroutines/</guid>
+      <description>Ever found yourself staring at Kotlin coroutines like they&amp;rsquo;re written in ancient hieroglyphics? Fear not, fellow developer! Let&amp;rsquo;s break down these mysterious creatures into bite-sized, digestible pieces that won&amp;rsquo;t give you indigestion.
+What Are Coroutines Anyway? Think of coroutines as tiny workers in your code who can pause their work, go grab a coffee, and come back exactly where they left off. Unlike regular functions that must run to completion, coroutines can take breaks without blocking the main thread.</description>
+      <content:encoded><![CDATA[<p>Ever found yourself staring at Kotlin coroutines like they&rsquo;re written in ancient hieroglyphics? Fear not, fellow developer! Let&rsquo;s break down these mysterious creatures into bite-sized, digestible pieces that won&rsquo;t give you indigestion.</p>
+<h2 id="what-are-coroutines-anyway">What Are Coroutines Anyway?</h2>
+<p>Think of coroutines as tiny workers in your code who can pause their work, go grab a coffee, and come back exactly where they left off. Unlike regular functions that must run to completion, coroutines can take breaks without blocking the main thread. Neat, right?</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>First, you&rsquo;ll need to add the coroutines dependency to your <code>build.gradle</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="the-basics-your-first-coroutine">The Basics: Your First Coroutine</h2>
+<p>Let&rsquo;s start with something simple:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Launch a coroutine in the lifecycle scope
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// This is suspended code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="c1">// Wait for 1 second
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;Coroutines&#34;</span><span class="p">,</span> <span class="s2">&#34;Hello from the future!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="coroutine-scopes-the-parent-child-relationship">Coroutine Scopes: The Parent-Child Relationship</h2>
+<p>Coroutines have a family tree that would make genealogists proud. Each coroutine has a parent, and when the parent is cancelled, all its children are cancelled too. It&rsquo;s like a really responsible family:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyViewModel</span> <span class="p">:</span> <span class="n">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span> <span class="c1">// Parent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">launch</span> <span class="p">{</span> <span class="c1">// Child 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// Some work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">launch</span> <span class="p">{</span> <span class="c1">// Child 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// More work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="common-pitfalls-ask-me-how-i-know-">Common Pitfalls (Ask Me How I Know 😅)</h2>
+<ol>
+<li>
+<p><strong>The Infinite Coroutine</strong>: Don&rsquo;t forget to cancel your coroutines! I once had a memory leak that took down an entire feature because I forgot this simple rule.</p>
+</li>
+<li>
+<p><strong>Wrong Context</strong>: Running network calls on the main thread is like trying to juggle while riding a unicycle - technically possible, but why would you do that to yourself?</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T DO THIS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Main</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Heavy network operation 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">api</span><span class="p">.</span><span class="n">fetchLargeData</span><span class="p">()</span> <span class="c1">// App freezes, users cry
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// DO THIS INSTEAD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Heavy network operation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">api</span><span class="p">.</span><span class="n">fetchLargeData</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Main</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Update UI safely
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">showData</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="real-world-example-image-loading">Real-World Example: Image Loading</h2>
+<p>Here&rsquo;s a practical example of using coroutines for loading images:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ImageLoader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">imageUrl</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">imageView</span><span class="p">:</span> <span class="n">ImageView</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Launch in the Main scope but switch to IO for network
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">bitmap</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">URL</span><span class="p">(</span><span class="n">imageUrl</span><span class="p">).</span><span class="n">openStream</span><span class="p">().</span><span class="n">use</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">                        <span class="nc">BitmapFactory</span><span class="p">.</span><span class="n">decodeStream</span><span class="p">(</span><span class="k">it</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// Back on Main thread
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">imageView</span><span class="p">.</span><span class="n">setImageBitmap</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// Handle error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nc">Log</span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="s2">&#34;ImageLoader&#34;</span><span class="p">,</span> <span class="s2">&#34;Failed to load image&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Coroutines might seem scary at first, but they&rsquo;re just trying to make our lives easier. Once you get the hang of them, you&rsquo;ll wonder how you ever lived without them. Stay tuned for more adventures in the Kotlin wilderness!</p>
 ]]></content:encoded>
     </item>
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://www.codefright.com/posts/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/posts/markdown-syntax/</guid>
-      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
-      <content:encoded><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
-<h2 id="headings">Headings</h2>
-<p>The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
-<h1 id="h1">H1</h1>
-<h2 id="h2">H2</h2>
-<h3 id="h3">H3</h3>
-<h4 id="h4">H4</h4>
-<h5 id="h5">H5</h5>
-<h6 id="h6">H6</h6>
-<h2 id="paragraph">Paragraph</h2>
-<p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.</p>
-<p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.</p>
-<h2 id="blockquotes">Blockquotes</h2>
-<p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a <code>footer</code> or <code>cite</code> element, and optionally with in-line changes such as annotations and abbreviations.</p>
-<h4 id="blockquote-without-attribution">Blockquote without attribution</h4>
-<blockquote>
-<p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-<strong>Note</strong> that you can use <em>Markdown syntax</em> within a blockquote.</p>
-</blockquote>
-<h4 id="blockquote-with-attribution">Blockquote with attribution</h4>
-<blockquote>
-<p>Don&rsquo;t communicate by sharing memory, share memory by communicating.</p>
-<p>— <cite>Rob Pike<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
-</blockquote>
-<h2 id="tables">Tables</h2>
-<p>Tables aren&rsquo;t part of the core Markdown spec, but Hugo supports them out-of-the-box.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Age</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bob</td>
-<td>27</td>
-</tr>
-<tr>
-<td>Alice</td>
-<td>23</td>
-</tr>
-</tbody>
-</table>
-<h4 id="inline-markdown-within-tables">Inline Markdown within tables</h4>
-<table>
-<thead>
-<tr>
-<th>Italics</th>
-<th>Bold</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>italics</em></td>
-<td><strong>bold</strong></td>
-<td><code>code</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="list-types">List Types</h2>
-<h4 id="ordered-list">Ordered List</h4>
-<ol>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-</ol>
-<h4 id="unordered-list">Unordered List</h4>
-<ul>
-<li>List item</li>
-<li>Another item</li>
-<li>And another item</li>
-</ul>
-<h4 id="nested-unordered-list">Nested Unordered list</h4>
-<ul>
-<li>Fruit
-<ul>
-<li>Apple</li>
-<li>Orange</li>
-<li>Banana</li>
-</ul>
-</li>
-<li>Dairy
-<ul>
-<li>Milk</li>
-<li>Cheese</li>
-</ul>
-</li>
-</ul>
-<h4 id="nested-ordered-list">Nested Ordered list</h4>
-<ol>
-<li>Fruit
-<ul>
-<li>Apple</li>
-<li>Orange</li>
-<li>Banana</li>
-</ul>
-</li>
-<li>Dairy
-<ol>
-<li>Milk</li>
-<li>Cheese</li>
-</ol>
-</li>
-<li>Third item
-<ol>
-<li>Sub One</li>
-<li>Sub Two</li>
-</ol>
-</li>
-</ol>
-<h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark</h2>
-<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
-<p>H<sub>2</sub>O</p>
-<p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
-<p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
-<p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>The above quote is excerpted from Rob Pike&rsquo;s <a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk</a> during Gopherfest, November 18, 2015.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>]]></content:encoded>
-    </item>
-    <item>
-      <title>Emoji Support</title>
-      <link>https://www.codefright.com/posts/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/posts/emoji-support/</guid>
-      <description>Guide to emoji usage in Hugo</description>
-      <content:encoded><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>
-<p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>
-<p>To enable emoji globally, set <code>enableEmoji</code> to <code>true</code> in your site&rsquo;s <a href="https://gohugo.io/getting-started/configuration/">configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
-<p><span class="nowrap"><span class="emojify">🙈</span> <code>:see_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙉</span> <code>:hear_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙊</span> <code>:speak_no_evil:</code></span></p>
-<br>
-<p>The <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
-<hr>
-<p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">.emoji {
-</span></span><span class="line"><span class="cl">font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
-</span></span><span class="line"><span class="cl">}</span></span></code></pre></div>
-
-
-<style>
-.emojify {
-	font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
-	font-size: 2rem;
-	vertical-align: middle;
-}
-@media screen and (max-width:650px) {
-  .nowrap {
-    display: block;
-    margin: 25px 0;
-  }
-}
-</style>]]></content:encoded>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>https://www.codefright.com/projects/</link>
+      <title>Featured Projects</title>
+      <link>http://localhost:1313/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/projects/</guid>
-      <description>Here are some of the GitHub projects I&amp;rsquo;ve worked on:
-FlipTimerView - FlipTimerView library for Android developed in Kotlin. http_cyclic_mocks - A Simple and lightweight Dart library for mocking/overriding HTTP responses with Dio. In this library you can add multiple responses for a single route/api endpoint.. </description>
-      <content:encoded><![CDATA[<p>Here are some of the GitHub projects I&rsquo;ve worked on:</p>
-<ol>
+      <guid>http://localhost:1313/projects/</guid>
+      <description>Open source projects and contributions in Android, Kotlin, and Flutter</description>
+      <content:encoded><![CDATA[<ol>
 <li><strong><a href="https://github.com/anugotta/FlipTimerView">FlipTimerView</a></strong> - FlipTimerView library for Android developed in Kotlin.</li>
 <li><strong><a href="https://github.com/anugotta/http_cyclic_mocks">http_cyclic_mocks</a></strong> - A Simple and lightweight Dart library for mocking/overriding HTTP responses with Dio. In this library you can add multiple responses for a single route/api endpoint..</li>
 </ol>

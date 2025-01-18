@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Async Programming on codeFright</title>
+    <link>http://localhost:1313/tags/async-programming/</link>
+    <description>Recent content in Async Programming on codeFright</description>
+    <image>
+      <title>codeFright</title>
+      <url>http://localhost:1313/static/logo.png</url>
+      <link>http://localhost:1313/static/logo.png</link>
+    </image>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en-us</language>
+    <copyright>2025 codeFright</copyright>
+    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/async-programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin Coroutines: A Guide for the Perpetually Confused</title>
+      <link>http://localhost:1313/posts/kotlin-coroutines/</link>
+      <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/kotlin-coroutines/</guid>
+      <description>Ever found yourself staring at Kotlin coroutines like they&amp;rsquo;re written in ancient hieroglyphics? Fear not, fellow developer! Let&amp;rsquo;s break down these mysterious creatures into bite-sized, digestible pieces that won&amp;rsquo;t give you indigestion.
+What Are Coroutines Anyway? Think of coroutines as tiny workers in your code who can pause their work, go grab a coffee, and come back exactly where they left off. Unlike regular functions that must run to completion, coroutines can take breaks without blocking the main thread.</description>
+      <content:encoded><![CDATA[<p>Ever found yourself staring at Kotlin coroutines like they&rsquo;re written in ancient hieroglyphics? Fear not, fellow developer! Let&rsquo;s break down these mysterious creatures into bite-sized, digestible pieces that won&rsquo;t give you indigestion.</p>
+<h2 id="what-are-coroutines-anyway">What Are Coroutines Anyway?</h2>
+<p>Think of coroutines as tiny workers in your code who can pause their work, go grab a coffee, and come back exactly where they left off. Unlike regular functions that must run to completion, coroutines can take breaks without blocking the main thread. Neat, right?</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>First, you&rsquo;ll need to add the coroutines dependency to your <code>build.gradle</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="the-basics-your-first-coroutine">The Basics: Your First Coroutine</h2>
+<p>Let&rsquo;s start with something simple:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// Launch a coroutine in the lifecycle scope
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// This is suspended code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">delay</span><span class="p">(</span><span class="m">1000</span><span class="p">)</span> <span class="c1">// Wait for 1 second
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;Coroutines&#34;</span><span class="p">,</span> <span class="s2">&#34;Hello from the future!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="coroutine-scopes-the-parent-child-relationship">Coroutine Scopes: The Parent-Child Relationship</h2>
+<p>Coroutines have a family tree that would make genealogists proud. Each coroutine has a parent, and when the parent is cancelled, all its children are cancelled too. It&rsquo;s like a really responsible family:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyViewModel</span> <span class="p">:</span> <span class="n">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span> <span class="c1">// Parent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">launch</span> <span class="p">{</span> <span class="c1">// Child 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// Some work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">launch</span> <span class="p">{</span> <span class="c1">// Child 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// More work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="common-pitfalls-ask-me-how-i-know-">Common Pitfalls (Ask Me How I Know 😅)</h2>
+<ol>
+<li>
+<p><strong>The Infinite Coroutine</strong>: Don&rsquo;t forget to cancel your coroutines! I once had a memory leak that took down an entire feature because I forgot this simple rule.</p>
+</li>
+<li>
+<p><strong>Wrong Context</strong>: Running network calls on the main thread is like trying to juggle while riding a unicycle - technically possible, but why would you do that to yourself?</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T DO THIS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Main</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Heavy network operation 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">api</span><span class="p">.</span><span class="n">fetchLargeData</span><span class="p">()</span> <span class="c1">// App freezes, users cry
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// DO THIS INSTEAD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Heavy network operation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">api</span><span class="p">.</span><span class="n">fetchLargeData</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Main</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Update UI safely
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">showData</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="real-world-example-image-loading">Real-World Example: Image Loading</h2>
+<p>Here&rsquo;s a practical example of using coroutines for loading images:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ImageLoader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">imageUrl</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">imageView</span><span class="p">:</span> <span class="n">ImageView</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Launch in the Main scope but switch to IO for network
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">lifecycleScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">bitmap</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">URL</span><span class="p">(</span><span class="n">imageUrl</span><span class="p">).</span><span class="n">openStream</span><span class="p">().</span><span class="n">use</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">                        <span class="nc">BitmapFactory</span><span class="p">.</span><span class="n">decodeStream</span><span class="p">(</span><span class="k">it</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// Back on Main thread
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">imageView</span><span class="p">.</span><span class="n">setImageBitmap</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// Handle error
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nc">Log</span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="s2">&#34;ImageLoader&#34;</span><span class="p">,</span> <span class="s2">&#34;Failed to load image&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Coroutines might seem scary at first, but they&rsquo;re just trying to make our lives easier. Once you get the hang of them, you&rsquo;ll wonder how you ever lived without them. Stay tuned for more adventures in the Kotlin wilderness!</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
