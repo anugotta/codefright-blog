@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Async Programming on codeFright</title>
-    <link>http://localhost:1313/tags/async-programming/</link>
+    <link>https://www.codefright.com/tags/async-programming/</link>
     <description>Recent content in Async Programming on codeFright</description>
     <image>
       <title>codeFright</title>
-      <url>http://localhost:1313/static/logo.png</url>
-      <link>http://localhost:1313/static/logo.png</link>
+      <url>https://www.codefright.com/static/logo.png</url>
+      <link>https://www.codefright.com/static/logo.png</link>
     </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright</copyright>
     <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/async-programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.codefright.com/tags/async-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kotlin Coroutines: A Guide for the Perpetually Confused</title>
-      <link>http://localhost:1313/posts/kotlin-coroutines/</link>
+      <link>https://www.codefright.com/posts/kotlin-coroutines/</link>
       <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/kotlin-coroutines/</guid>
+      <guid>https://www.codefright.com/posts/kotlin-coroutines/</guid>
       <description>Ever found yourself staring at Kotlin coroutines like they&amp;rsquo;re written in ancient hieroglyphics? Fear not, fellow developer! Let&amp;rsquo;s break down these mysterious creatures into bite-sized, digestible pieces that won&amp;rsquo;t give you indigestion.
 What Are Coroutines Anyway? Think of coroutines as tiny workers in your code who can pause their work, go grab a coffee, and come back exactly where they left off. Unlike regular functions that must run to completion, coroutines can take breaks without blocking the main thread.</description>
       <content:encoded><![CDATA[<p>Ever found yourself staring at Kotlin coroutines like they&rsquo;re written in ancient hieroglyphics? Fear not, fellow developer! Let&rsquo;s break down these mysterious creatures into bite-sized, digestible pieces that won&rsquo;t give you indigestion.</p>
