@@ -12,8 +12,882 @@
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright 👻</copyright>
-    <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.codefright.com/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>⚡ Android Developer Interview Guide</title>
+      <link>https://www.codefright.com/posts/interview-guide/</link>
+      <pubDate>Fri, 03 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/posts/interview-guide/</guid>
+      <description>This guide is also available as a comprehensive GitHub repository:
+Core Android Concepts Activities &amp;amp; Fragments Activity Lifecycle onCreate(): Activity is first created
+Initialize UI Set content view Initialize variables onStart(): Activity becomes visible
+Prepare UI elements Register broadcast receivers onResume(): Activity starts interacting with user
+Start animations/video playback Initialize foreground services onPause(): Activity partially visible but not focused
+Pause ongoing operations Save draft data onStop(): Activity no longer visible</description>
+      <content:encoded><![CDATA[<p>This guide is also available as a comprehensive GitHub repository:</p>
+<p><a href="https://github.com/anugotta/AndroidNotes"><img loading="lazy" src="https://img.shields.io/badge/GitHub-AndroidNotes-brightgreen" alt="Android Notes"  />
+</a></p>
+<hr>
+<h2 id="core-android-concepts">Core Android Concepts</h2>
+<h3 id="activities--fragments">Activities &amp; Fragments</h3>
+<h4 id="activity-lifecycle">Activity Lifecycle</h4>
+<ul>
+<li>
+<p><code>onCreate()</code>: Activity is first created</p>
+<ul>
+<li>Initialize UI</li>
+<li>Set content view</li>
+<li>Initialize variables</li>
+</ul>
+</li>
+<li>
+<p><code>onStart()</code>: Activity becomes visible</p>
+<ul>
+<li>Prepare UI elements</li>
+<li>Register broadcast receivers</li>
+</ul>
+</li>
+<li>
+<p><code>onResume()</code>: Activity starts interacting with user</p>
+<ul>
+<li>Start animations/video playback</li>
+<li>Initialize foreground services</li>
+</ul>
+</li>
+<li>
+<p><code>onPause()</code>: Activity partially visible but not focused</p>
+<ul>
+<li>Pause ongoing operations</li>
+<li>Save draft data</li>
+</ul>
+</li>
+<li>
+<p><code>onStop()</code>: Activity no longer visible</p>
+<ul>
+<li>Save persistent data</li>
+<li>Release resources</li>
+</ul>
+</li>
+<li>
+<p><code>onDestroy()</code>: Activity being destroyed</p>
+<ul>
+<li>Cleanup resources</li>
+<li>Unregister receivers</li>
+</ul>
+</li>
+</ul>
+<p>Common Flows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">Normal Flow:
+</span></span><span class="line"><span class="cl">onCreate → onStart → onResume → onPause → onStop → onDestroy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Background Flow:
+</span></span><span class="line"><span class="cl">onStop → onRestart → onStart
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Configuration Change:
+</span></span><span class="line"><span class="cl">onPause → onSaveInstanceState → onStop → onDestroy → 
+</span></span><span class="line"><span class="cl">onCreate → onStart → onRestoreInstanceState → onResume
+</span></span></code></pre></div><h4 id="fragment-lifecycle">Fragment Lifecycle</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">Complete Flow:
+</span></span><span class="line"><span class="cl">onAttach → onCreate → onCreateView → onViewCreated → 
+</span></span><span class="line"><span class="cl">onActivityCreated → onStart → onResume → onPause → 
+</span></span><span class="line"><span class="cl">onStop → onDestroyView → onDestroy → onDetach
+</span></span></code></pre></div><p>Key Methods:</p>
+<ul>
+<li><code>onAttach()</code>: Fragment attached to activity</li>
+<li><code>onCreateView()</code>: Create and return view hierarchy</li>
+<li><code>onViewCreated()</code>: View setup after creation</li>
+<li><code>onDestroyView()</code>: View hierarchy being destroyed</li>
+</ul>
+<h3 id="services">Services</h3>
+<h4 id="types-of-services">Types of Services</h4>
+<ol>
+<li><strong>Foreground Service</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MusicService</span> <span class="p">:</span> <span class="n">Service</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onStartCommand</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?,</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">startId</span><span class="p">:</span> <span class="n">Int</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">notification</span> <span class="p">=</span> <span class="n">createNotification</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">startForeground</span><span class="p">(</span><span class="n">NOTIFICATION_ID</span><span class="p">,</span> <span class="n">notification</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">START_STICKY</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Background Service</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DataSyncService</span> <span class="p">:</span> <span class="n">Service</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onStartCommand</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?,</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">startId</span><span class="p">:</span> <span class="n">Int</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Perform background operation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">START_NOT_STICKY</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="3">
+<li><strong>Bound Service</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LocalService</span> <span class="p">:</span> <span class="n">Service</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">binder</span> <span class="p">=</span> <span class="n">LocalBinder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">inner</span> <span class="k">class</span> <span class="nc">LocalBinder</span> <span class="p">:</span> <span class="n">Binder</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">fun</span> <span class="nf">getService</span><span class="p">():</span> <span class="n">LocalService</span> <span class="p">=</span> <span class="k">this</span><span class="nd">@LocalService</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onBind</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">):</span> <span class="n">IBinder</span> <span class="p">=</span> <span class="n">binder</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="4">
+<li><strong>IntentService</strong> (Deprecated, use WorkManager instead)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DataProcessingService</span> <span class="p">:</span> <span class="n">IntentService</span><span class="p">(</span><span class="s2">&#34;DataProcessingService&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onHandleIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Process data in background
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="intents--communication">Intents &amp; Communication</h3>
+<h4 id="types-of-intents">Types of Intents</h4>
+<ol>
+<li><strong>Explicit Intents</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Start specific activity
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">TargetActivity</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">intent</span><span class="p">.</span><span class="n">putExtra</span><span class="p">(</span><span class="s2">&#34;key&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Implicit Intents</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Open URL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">ACTION_VIEW</span><span class="p">,</span> <span class="nc">Uri</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&#34;https://example.com&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Share text
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">shareIntent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">action</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">.</span><span class="n">ACTION_SEND</span>
+</span></span><span class="line"><span class="cl">    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;text/plain&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">putExtra</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">EXTRA_TEXT</span><span class="p">,</span> <span class="s2">&#34;Share this&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">startActivity</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">createChooser</span><span class="p">(</span><span class="n">shareIntent</span><span class="p">,</span> <span class="s2">&#34;Share via&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><h4 id="broadcast-receivers">Broadcast Receivers</h4>
+<ol>
+<li><strong>Static Receiver</strong> (Manifest-declared)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;receiver</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:name=</span><span class="s">&#34;.MyReceiver&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.BOOT_COMPLETED&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/receiver&gt;</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Dynamic Receiver</strong> (Runtime registration)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">receiver</span> <span class="p">=</span> <span class="k">object</span> <span class="err">: </span><span class="nc">BroadcastReceiver</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onReceive</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Handle broadcast
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onResume</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">registerReceiver</span><span class="p">(</span><span class="k">receiver</span><span class="p">,</span> <span class="n">IntentFilter</span><span class="p">(</span><span class="s2">&#34;ACTION_NAME&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onPause</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">unregisterReceiver</span><span class="p">(</span><span class="k">receiver</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="kotlin-fundamentals">Kotlin Fundamentals</h2>
+<h3 id="key-features">Key Features</h3>
+<h4 id="null-safety">Null Safety</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Nullable types
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">var</span> <span class="py">nullableString</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Safe call operator
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">nullableString</span><span class="o">?.</span><span class="n">length</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Elvis operator
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">length</span> <span class="p">=</span> <span class="n">nullableString</span><span class="o">?.</span><span class="n">length</span> <span class="o">?:</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Not-null assertion
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">definiteLength</span> <span class="p">=</span> <span class="n">nullableString</span><span class="o">!!</span><span class="p">.</span><span class="n">length</span> <span class="c1">// Throws if null
+</span></span></span></code></pre></div><h4 id="properties">Properties</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Lazy initialization
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">expensive</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">lazy</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Computed only on first access
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">computeExpensiveString</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Late initialization
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">lateinit</span> <span class="k">var</span> <span class="py">lateinitVar</span><span class="p">:</span> <span class="n">String</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Initialize later
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">lateinitVar</span> <span class="p">=</span> <span class="s2">&#34;Now initialized&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Custom getters/setters
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">var</span> <span class="py">counter</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="k">field</span>
+</span></span><span class="line"><span class="cl">    <span class="k">set</span><span class="p">(</span><span class="k">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="o">&gt;=</span> <span class="m">0</span><span class="p">)</span> <span class="k">field</span> <span class="p">=</span> <span class="k">value</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><h2 id="modern-android-development">Modern Android Development</h2>
+<h3 id="jetpack-compose">Jetpack Compose</h3>
+<h4 id="basic-composables">Basic Composables</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Greeting</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Column</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="n">text</span> <span class="p">=</span> <span class="s2">&#34;Hello </span><span class="si">$name</span><span class="s2">!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="cm">/* action */</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Click me&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="state-management">State Management</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Local state
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">count</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="n">count</span><span class="o">++</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Count: </span><span class="si">$count</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Hoisted state
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">StatefulCounter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">onCountChange</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="n">onCountChange</span><span class="p">(</span><span class="n">count</span> <span class="p">+</span> <span class="m">1</span><span class="p">)</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Count: </span><span class="si">$count</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="side-effects">Side Effects</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">MyScreen</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Run on first composition
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Launch coroutine
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Run on every successful composition
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">SideEffect</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Update non-compose code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Cleanup when leaving composition
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">DisposableEffect</span><span class="p">(</span><span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">onDispose</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Cleanup
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="navigation-component">Navigation Component</h3>
+<h4 id="navigation-graph">Navigation Graph</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;navigation</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:id=</span><span class="s">&#34;@+id/nav_graph&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">app:startDestination=</span><span class="s">&#34;@id/homeFragment&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;fragment</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/homeFragment&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:name=</span><span class="s">&#34;.HomeFragment&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span>
+</span></span><span class="line"><span class="cl">            <span class="na">android:id=</span><span class="s">&#34;@+id/to_detail&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">app:destination=</span><span class="s">&#34;@id/detailFragment&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;argument</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:name=</span><span class="s">&#34;itemId&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">app:argType=</span><span class="s">&#34;string&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/action&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/fragment&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;fragment</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:id=</span><span class="s">&#34;@+id/detailFragment&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">android:name=</span><span class="s">&#34;.DetailFragment&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/navigation&gt;</span>
+</span></span></code></pre></div><h4 id="navigation-in-code">Navigation in Code</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Using Safe Args
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">HomeFragment</span> <span class="p">:</span> <span class="n">Fragment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">navArgs</span><span class="p">:</span> <span class="n">HomeFragmentArgs</span> <span class="k">by</span> <span class="n">navArgs</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">navigate</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">action</span> <span class="p">=</span> <span class="nc">HomeFragmentDirections</span><span class="p">.</span><span class="n">toDetail</span><span class="p">(</span><span class="n">itemId</span> <span class="p">=</span> <span class="s2">&#34;123&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">findNavController</span><span class="p">().</span><span class="n">navigate</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="architecture-components">Architecture Components</h2>
+<h3 id="mvvm-pattern">MVVM Pattern</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Model
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">data</span> <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModel
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">UserViewModel</span> <span class="p">:</span> <span class="n">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">_user</span> <span class="p">=</span> <span class="n">MutableLiveData</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">user</span><span class="p">:</span> <span class="n">LiveData</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">_user</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">loadUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_user</span><span class="p">.</span><span class="k">value</span> <span class="p">=</span> <span class="n">repository</span><span class="p">.</span><span class="n">getUser</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// View
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">UserFragment</span> <span class="p">:</span> <span class="n">Fragment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">viewModel</span><span class="p">:</span> <span class="n">UserViewModel</span> <span class="k">by</span> <span class="n">viewModels</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onViewCreated</span><span class="p">(</span><span class="n">view</span><span class="p">:</span> <span class="n">View</span><span class="p">,</span> <span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onViewCreated</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">savedInstanceState</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModel</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">observe</span><span class="p">(</span><span class="n">viewLifecycleOwner</span><span class="p">)</span> <span class="p">{</span> <span class="n">user</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Update UI
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="state-management-1">State Management</h3>
+<h4 id="stateflow">StateFlow</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UserViewModel</span> <span class="p">:</span> <span class="n">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">_uiState</span> <span class="p">=</span> <span class="n">MutableStateFlow</span><span class="p">&lt;</span><span class="n">UiState</span><span class="p">&gt;(</span><span class="nc">UiState</span><span class="p">.</span><span class="n">Initial</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">uiState</span><span class="p">:</span> <span class="n">StateFlow</span><span class="p">&lt;</span><span class="n">UiState</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">_uiState</span><span class="p">.</span><span class="n">asStateFlow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">loadData</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_uiState</span><span class="p">.</span><span class="k">value</span> <span class="p">=</span> <span class="nc">UiState</span><span class="p">.</span><span class="n">Loading</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">repository</span><span class="p">.</span><span class="n">getData</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_uiState</span><span class="p">.</span><span class="k">value</span> <span class="p">=</span> <span class="nc">UiState</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_uiState</span><span class="p">.</span><span class="k">value</span> <span class="p">=</span> <span class="nc">UiState</span><span class="p">.</span><span class="n">Error</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// States
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">sealed</span> <span class="k">class</span> <span class="nc">UiState</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">object</span> <span class="nc">Initial</span> <span class="p">:</span> <span class="n">UiState</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">object</span> <span class="nc">Loading</span> <span class="p">:</span> <span class="n">UiState</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">data</span> <span class="k">class</span> <span class="nc">Success</span><span class="p">(</span><span class="k">val</span> <span class="py">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="p">:</span> <span class="n">UiState</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">data</span> <span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="k">val</span> <span class="py">message</span><span class="p">:</span> <span class="n">String</span><span class="p">?)</span> <span class="p">:</span> <span class="n">UiState</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="room-database">Room Database</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Entity
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Entity</span><span class="p">(</span><span class="n">tableName</span> <span class="p">=</span> <span class="s2">&#34;users&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">data</span> <span class="k">class</span> <span class="nc">UserEntity</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@PrimaryKey</span> <span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">email</span><span class="p">:</span> <span class="n">String</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// DAO
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Dao</span>
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nc">UserDao</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Query</span><span class="p">(</span><span class="s2">&#34;SELECT * FROM users&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">getAll</span><span class="p">():</span> <span class="n">Flow</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserEntity</span><span class="p">&gt;&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Insert</span><span class="p">(</span><span class="n">onConflict</span> <span class="p">=</span> <span class="nc">OnConflictStrategy</span><span class="p">.</span><span class="n">REPLACE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">insert</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserEntity</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">delete</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserEntity</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Database
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Database</span><span class="p">(</span><span class="n">entities</span> <span class="p">=</span> <span class="p">[</span><span class="n">UserEntity</span><span class="o">::</span><span class="k">class</span><span class="p">],</span> <span class="n">version</span> <span class="p">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">AppDatabase</span> <span class="p">:</span> <span class="n">RoomDatabase</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">userDao</span><span class="p">():</span> <span class="n">UserDao</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="dependency-injection-with-hilt">Dependency Injection with Hilt</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Application class
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@HiltAndroidApp</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyApplication</span> <span class="p">:</span> <span class="n">Application</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Module
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Module</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@InstallIn</span><span class="p">(</span><span class="n">SingletonComponent</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">object</span> <span class="nc">AppModule</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Provides</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Singleton</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">provideDatabase</span><span class="p">(</span><span class="nd">@ApplicationContext</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">):</span> <span class="n">AppDatabase</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nc">Room</span><span class="p">.</span><span class="n">databaseBuilder</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">AppDatabase</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;app_database&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">).</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModel injection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@HiltViewModel</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainViewModel</span> <span class="nd">@Inject</span> <span class="k">constructor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">repository</span><span class="p">:</span> <span class="n">Repository</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">:</span> <span class="n">ViewModel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Activity injection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@AndroidEntryPoint</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="background-processing">Background Processing</h2>
+<h3 id="coroutines">Coroutines</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainViewModel</span> <span class="p">:</span> <span class="n">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Different Coroutine Scopes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ViewModel Scope
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Runs on Main dispatcher by default
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// Background work with IO dispatcher
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Network or database operations
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// CPU-intensive work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">viewModelScope</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Default</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Complex calculations
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Parallel Execution
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">loadDataInParallel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">coroutineScope</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="py">result1</span> <span class="p">=</span> <span class="n">async</span> <span class="p">{</span> <span class="n">api</span><span class="p">.</span><span class="n">getData1</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="py">result2</span> <span class="p">=</span> <span class="n">async</span> <span class="p">{</span> <span class="n">api</span><span class="p">.</span><span class="n">getData2</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="py">combinedResult</span> <span class="p">=</span> <span class="n">result1</span><span class="p">.</span><span class="n">await</span><span class="p">()</span> <span class="p">+</span> <span class="n">result2</span><span class="p">.</span><span class="n">await</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="workmanager">WorkManager</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Define Work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">DataSyncWorker</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">params</span><span class="p">:</span> <span class="n">WorkerParameters</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">:</span> <span class="n">CoroutineWorker</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">doWork</span><span class="p">():</span> <span class="n">Result</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Do background work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nc">Result</span><span class="p">.</span><span class="n">success</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nc">Result</span><span class="p">.</span><span class="n">retry</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Schedule Work
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Repository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">scheduleSync</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">constraints</span> <span class="p">=</span> <span class="nc">Constraints</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">setRequiredNetworkType</span><span class="p">(</span><span class="nc">NetworkType</span><span class="p">.</span><span class="n">CONNECTED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">setRequiresBatteryNotLow</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">syncWork</span> <span class="p">=</span> <span class="n">OneTimeWorkRequestBuilder</span><span class="p">&lt;</span><span class="n">DataSyncWorker</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">setConstraints</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">setBackoffCriteria</span><span class="p">(</span><span class="nc">BackoffPolicy</span><span class="p">.</span><span class="n">LINEAR</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="nc">TimeUnit</span><span class="p">.</span><span class="n">MINUTES</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nc">WorkManager</span><span class="p">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">enqueueUniqueWork</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;sync_work&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">ExistingWorkPolicy</span><span class="p">.</span><span class="n">REPLACE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">syncWork</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="rxjava">RxJava</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Basic Observable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nc">Observable</span><span class="p">.</span><span class="n">just</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="k">it</span> <span class="p">*</span> <span class="m">2</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="k">it</span> <span class="p">&gt;</span> <span class="m">5</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">subscribe</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Network Call with RxJava
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">interface</span> <span class="nc">ApiService</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GET</span><span class="p">(</span><span class="s2">&#34;users&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">getUsers</span><span class="p">():</span> <span class="n">Single</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Repository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">getUsers</span><span class="p">():</span> <span class="n">Single</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">apiService</span><span class="p">.</span><span class="n">getUsers</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">subscribeOn</span><span class="p">(</span><span class="nc">Schedulers</span><span class="p">.</span><span class="n">io</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">observeOn</span><span class="p">(</span><span class="nc">AndroidSchedulers</span><span class="p">.</span><span class="n">mainThread</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="data-management">Data Management</h2>
+<h3 id="secure-data-storage">Secure Data Storage</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Encrypted Shared Preferences
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">masterKey</span> <span class="p">=</span> <span class="nc">MasterKey</span><span class="p">.</span><span class="n">Builder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">setKeyScheme</span><span class="p">(</span><span class="nc">MasterKey</span><span class="p">.</span><span class="nc">KeyScheme</span><span class="p">.</span><span class="n">AES256_GCM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">sharedPreferences</span> <span class="p">=</span> <span class="nc">EncryptedSharedPreferences</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;secret_prefs&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">masterKey</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">EncryptedSharedPreferences</span><span class="p">.</span><span class="nc">PrefKeyEncryptionScheme</span><span class="p">.</span><span class="n">AES256_SIV</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">EncryptedSharedPreferences</span><span class="p">.</span><span class="nc">PrefValueEncryptionScheme</span><span class="p">.</span><span class="n">AES256_GCM</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Encrypted Files
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">encryptedFile</span> <span class="p">=</span> <span class="nc">EncryptedFile</span><span class="p">.</span><span class="n">Builder</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">File</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">filesDir</span><span class="p">,</span> <span class="s2">&#34;secret.txt&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">masterKey</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">EncryptedFile</span><span class="p">.</span><span class="nc">FileEncryptionScheme</span><span class="p">.</span><span class="n">AES256_GCM_HKDF_4KB</span>
+</span></span><span class="line"><span class="cl"><span class="p">).</span><span class="n">build</span><span class="p">()</span>
+</span></span></code></pre></div><h3 id="network-security">Network Security</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Certificate Pinning with OkHttp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">certificatePinner</span> <span class="p">=</span> <span class="nc">CertificatePinner</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;example.com&#34;</span><span class="p">,</span> <span class="s2">&#34;sha256/XXXX=&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">okHttpClient</span> <span class="p">=</span> <span class="nc">OkHttpClient</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">certificatePinner</span><span class="p">(</span><span class="n">certificatePinner</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Retrofit with Security
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">retrofit</span> <span class="p">=</span> <span class="nc">Retrofit</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">baseUrl</span><span class="p">(</span><span class="s2">&#34;https://api.example.com/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">okHttpClient</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">addConverterFactory</span><span class="p">(</span><span class="nc">GsonConverterFactory</span><span class="p">.</span><span class="n">create</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="testing">Testing</h2>
+<h3 id="unit-testing">Unit Testing</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`test user validation`</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">validator</span> <span class="p">=</span> <span class="n">UserValidator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">assertTrue</span><span class="p">(</span><span class="n">validator</span><span class="p">.</span><span class="n">isValidEmail</span><span class="p">(</span><span class="s2">&#34;test@example.com&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">assertFalse</span><span class="p">(</span><span class="n">validator</span><span class="p">.</span><span class="n">isValidEmail</span><span class="p">(</span><span class="s2">&#34;invalid-email&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ViewModel Testing
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">`test loading state`</span><span class="p">()</span> <span class="p">=</span> <span class="n">runTest</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">repository</span> <span class="p">=</span> <span class="n">mockk</span><span class="p">&lt;</span><span class="n">Repository</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">coEvery</span> <span class="p">{</span> <span class="n">repository</span><span class="p">.</span><span class="n">getData</span><span class="p">()</span> <span class="p">}</span> <span class="n">returns</span> <span class="nc">Result</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">viewModel</span> <span class="p">=</span> <span class="n">MainViewModel</span><span class="p">(</span><span class="n">repository</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">viewModel</span><span class="p">.</span><span class="n">loadData</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">assertEquals</span><span class="p">(</span><span class="nc">UiState</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="k">data</span><span class="p">),</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">uiState</span><span class="p">.</span><span class="k">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="ui-testing-with-espresso">UI Testing with Espresso</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">testLoginFlow</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Launch activity
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nc">ActivityScenario</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="n">LoginActivity</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Type text
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">onView</span><span class="p">(</span><span class="n">withId</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">emailInput</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">perform</span><span class="p">(</span><span class="n">typeText</span><span class="p">(</span><span class="s2">&#34;test@example.com&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Click button
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">onView</span><span class="p">(</span><span class="n">withId</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">loginButton</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">perform</span><span class="p">(</span><span class="n">click</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Verify text
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">onView</span><span class="p">(</span><span class="n">withId</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">statusText</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">check</span><span class="p">(</span><span class="n">matches</span><span class="p">(</span><span class="n">withText</span><span class="p">(</span><span class="s2">&#34;Success&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="compose-ui-testing">Compose UI Testing</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">testCounter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">composeTestRule</span><span class="p">.</span><span class="n">setContent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Counter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">composeTestRule</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">onNodeWithText</span><span class="p">(</span><span class="s2">&#34;Count: 0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">assertExists</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">performClick</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">composeTestRule</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">onNodeWithText</span><span class="p">(</span><span class="s2">&#34;Count: 1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">assertExists</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="memory-management">Memory Management</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Avoid memory leaks with weak references
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">private</span> <span class="k">val</span> <span class="py">weakReference</span> <span class="p">=</span> <span class="n">WeakReference</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Proper bitmap handling
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">private</span> <span class="k">fun</span> <span class="nf">loadBitmap</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">options</span> <span class="p">=</span> <span class="nc">BitmapFactory</span><span class="p">.</span><span class="n">Options</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inJustDecodeBounds</span> <span class="p">=</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">BitmapFactory</span><span class="p">.</span><span class="n">decodeResource</span><span class="p">(</span><span class="n">resources</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">image</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">options</span><span class="p">.</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inSampleSize</span> <span class="p">=</span> <span class="n">calculateInSampleSize</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">reqWidth</span><span class="p">,</span> <span class="n">reqHeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inJustDecodeBounds</span> <span class="p">=</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Memory Cache
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ImageCache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">memoryCache</span> <span class="p">=</span> <span class="k">object</span> <span class="err">: </span><span class="nc">LruCache</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Bitmap</span><span class="p">&gt;(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nc">Runtime</span><span class="p">.</span><span class="n">getRuntime</span><span class="p">().</span><span class="n">maxMemory</span><span class="p">()</span> <span class="p">/</span> <span class="m">1024</span><span class="p">).</span><span class="n">toInt</span><span class="p">()</span> <span class="p">/</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">override</span> <span class="k">fun</span> <span class="nf">sizeOf</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">:</span> <span class="n">Bitmap</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">byteCount</span> <span class="p">/</span> <span class="m">1024</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="build--deployment">Build &amp; Deployment</h2>
+<h3 id="gradle-configuration">Gradle Configuration</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="c1">// App level build.gradle.kts
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">plugins</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span><span class="o">(</span><span class="s2">&#34;com.android.application&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span><span class="o">(</span><span class="s2">&#34;kotlin-android&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span><span class="o">(</span><span class="s2">&#34;kotlin-kapt&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id</span><span class="o">(</span><span class="s2">&#34;dagger.hilt.android.plugin&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">android</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">defaultConfig</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">applicationId</span> <span class="o">=</span> <span class="s2">&#34;com.example.app&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">minSdk</span> <span class="o">=</span> <span class="mi">24</span>
+</span></span><span class="line"><span class="cl">        <span class="n">targetSdk</span> <span class="o">=</span> <span class="mi">34</span>
+</span></span><span class="line"><span class="cl">        <span class="n">versionCode</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">versionName</span> <span class="o">=</span> <span class="s2">&#34;1.0.0&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">buildTypes</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">release</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">isMinifyEnabled</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">            <span class="n">proguardFiles</span><span class="o">(</span><span class="n">getDefaultProguardFile</span><span class="o">(</span><span class="s2">&#34;proguard-android.txt&#34;</span><span class="o">),</span> <span class="s2">&#34;proguard-rules.pro&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">debug</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">applicationIdSuffix</span> <span class="o">=</span> <span class="s2">&#34;.debug&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">isDebuggable</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">buildFeatures</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">compose</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">        <span class="n">viewBinding</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="apk-vs-app-bundle">APK vs App Bundle</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// App Bundle benefits:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 1. Smaller download size
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 2. Dynamic feature delivery
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 3. Optimized for different devices
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Configure dynamic feature
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">android</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dynamicFeatures</span> <span class="p">=</span> <span class="n">mutableSetOf</span><span class="p">(</span><span class="s2">&#34;:feature_module&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Install dynamic feature
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">AppCompatActivity</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">installFeature</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">request</span> <span class="p">=</span> <span class="nc">SplitInstallRequest</span><span class="p">.</span><span class="n">newBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">addModule</span><span class="p">(</span><span class="s2">&#34;feature_module&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">splitInstallManager</span><span class="p">.</span><span class="n">startInstall</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">addOnSuccessListener</span> <span class="p">{</span> <span class="cm">/* Handle success */</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">addOnFailureListener</span> <span class="p">{</span> <span class="cm">/* Handle failure */</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="cicd-pipeline">CI/CD Pipeline</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Example GitHub Actions workflow</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Android CI</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">main ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">main ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up JDK</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-java@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">java-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;11&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Run Tests</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">./gradlew test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Debug APK</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">./gradlew assembleDebug</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload APK</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/upload-artifact@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">app-debug</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">app/build/outputs/apk/debug/app-debug.apk</span><span class="w">
+</span></span></span></code></pre></div><h2 id="data-structures--algorithms">Data Structures &amp; Algorithms</h2>
+<h3 id="common-interview-problems">Common Interview Problems</h3>
+<h4 id="1-string-manipulation">1. String Manipulation</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Reverse String
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">reverseString</span><span class="p">(</span><span class="n">str</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">str</span><span class="p">.</span><span class="n">reversed</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Or manual implementation:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">str</span><span class="p">.</span><span class="n">toCharArray</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">apply</span> <span class="p">{</span> <span class="n">reverse</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">joinToString</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Check Palindrome
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="n">str</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">cleanStr</span> <span class="p">=</span> <span class="n">str</span><span class="p">.</span><span class="n">lowercase</span><span class="p">().</span><span class="n">filter</span> <span class="p">{</span> <span class="k">it</span><span class="p">.</span><span class="n">isLetterOrDigit</span><span class="p">()</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">cleanStr</span> <span class="o">==</span> <span class="n">cleanStr</span><span class="p">.</span><span class="n">reversed</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="2-array-operations">2. Array Operations</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Find Missing Number
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">findMissingNumber</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">IntArray</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">n</span> <span class="p">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span> <span class="p">+</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">expectedSum</span> <span class="p">=</span> <span class="p">(</span><span class="n">n</span> <span class="p">*</span> <span class="p">(</span><span class="n">n</span> <span class="p">+</span> <span class="m">1</span><span class="p">))</span> <span class="p">/</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">actualSum</span> <span class="p">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">expectedSum</span> <span class="p">-</span> <span class="n">actualSum</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Maximum Subarray Sum
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">maxSubArraySum</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">IntArray</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">maxSoFar</span> <span class="p">=</span> <span class="n">arr</span><span class="p">[</span><span class="m">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">maxEndingHere</span> <span class="p">=</span> <span class="n">arr</span><span class="p">[</span><span class="m">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">1</span> <span class="n">until</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">maxEndingHere</span> <span class="p">=</span> <span class="n">maxOf</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">maxEndingHere</span> <span class="p">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">maxSoFar</span> <span class="p">=</span> <span class="n">maxOf</span><span class="p">(</span><span class="n">maxSoFar</span><span class="p">,</span> <span class="n">maxEndingHere</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">maxSoFar</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="3-linked-list-operations">3. Linked List Operations</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">data</span> <span class="k">class</span> <span class="nc">ListNode</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">value</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">next</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Reverse Linked List
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">reverseList</span><span class="p">(</span><span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">?):</span> <span class="n">ListNode</span><span class="p">?</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">prev</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">current</span> <span class="p">=</span> <span class="n">head</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">current</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">next</span> <span class="p">=</span> <span class="n">current</span><span class="p">.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">        <span class="n">current</span><span class="p">.</span><span class="n">next</span> <span class="p">=</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prev</span> <span class="p">=</span> <span class="n">current</span>
+</span></span><span class="line"><span class="cl">        <span class="n">current</span> <span class="p">=</span> <span class="n">next</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">prev</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Detect Cycle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">?):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">slow</span> <span class="p">=</span> <span class="n">head</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">fast</span> <span class="p">=</span> <span class="n">head</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">fast</span><span class="o">?.</span><span class="n">next</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">slow</span> <span class="p">=</span> <span class="n">slow</span><span class="o">?.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fast</span> <span class="p">=</span> <span class="n">fast</span><span class="p">.</span><span class="n">next</span><span class="o">?.</span><span class="n">next</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">slow</span> <span class="o">==</span> <span class="n">fast</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="android-specific-optimizations">Android-Specific Optimizations</h3>
+<h4 id="1-view-hierarchy-optimization">1. View Hierarchy Optimization</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Flatten view hierarchy
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="n">merge</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">android</span><span class="p">=</span><span class="s2">&#34;http://schemas.android.com/apk/res/android&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;!</span><span class="o">--</span> <span class="n">Child</span> <span class="n">views</span> <span class="o">--</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">merge</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Use ConstraintLayout for complex layouts
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="n">androidx</span><span class="p">.</span><span class="n">constraintlayout</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">ConstraintLayout</span>
+</span></span><span class="line"><span class="cl">    <span class="n">android</span><span class="p">:</span><span class="n">layout_width</span><span class="p">=</span><span class="s2">&#34;match_parent&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">android</span><span class="p">:</span><span class="n">layout_height</span><span class="p">=</span><span class="s2">&#34;match_parent&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;!</span><span class="o">--</span> <span class="n">Constraints</span> <span class="n">reduce</span> <span class="n">nesting</span> <span class="o">--</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">androidx</span><span class="p">.</span><span class="n">constraintlayout</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">ConstraintLayout</span><span class="p">&gt;</span>
+</span></span></code></pre></div><h4 id="2-recyclerview-optimization">2. RecyclerView Optimization</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">OptimizedAdapter</span> <span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="n">Adapter</span><span class="p">&lt;</span><span class="n">ViewHolder</span><span class="p">&gt;()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Implement DiffUtil
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">private</span> <span class="k">val</span> <span class="py">diffCallback</span> <span class="p">=</span> <span class="k">object</span> <span class="err">: </span><span class="nc">DiffUtil</span><span class="p">.</span><span class="n">ItemCallback</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">&gt;()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">override</span> <span class="k">fun</span> <span class="nf">areItemsTheSame</span><span class="p">(</span><span class="n">oldItem</span><span class="p">:</span> <span class="n">Item</span><span class="p">,</span> <span class="n">newItem</span><span class="p">:</span> <span class="n">Item</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">oldItem</span><span class="p">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">newItem</span><span class="p">.</span><span class="n">id</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">override</span> <span class="k">fun</span> <span class="nf">areContentsTheSame</span><span class="p">(</span><span class="n">oldItem</span><span class="p">:</span> <span class="n">Item</span><span class="p">,</span> <span class="n">newItem</span><span class="p">:</span> <span class="n">Item</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">oldItem</span> <span class="o">==</span> <span class="n">newItem</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Use ListAdapter for automatic diff
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">class</span> <span class="nc">EfficientAdapter</span> <span class="p">:</span> <span class="n">ListAdapter</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">,</span> <span class="n">ViewHolder</span><span class="p">&gt;(</span><span class="n">diffCallback</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// View pool for shared ViewHolders
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">init</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setHasStableIds</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">recyclerView</span><span class="p">.</span><span class="n">setRecycledViewPool</span><span class="p">(</span><span class="n">viewPool</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="best-practices--tips">Best Practices &amp; Tips</h2>
+<h3 id="code-quality">Code Quality</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Use meaningful names
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">processUserData</span><span class="p">()</span> <span class="n">instead</span> <span class="n">of</span> <span class="k">fun</span> <span class="nf">process</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Single Responsibility Principle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">UserRepository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">getUser</span><span class="p">()</span> <span class="c1">// Only user-related operations
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Dependency Injection over direct instantiation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">MyViewModel</span> <span class="nd">@Inject</span> <span class="k">constructor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">repository</span><span class="p">:</span> <span class="n">Repository</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Error Handling
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">sealed</span> <span class="k">class</span> <span class="nc">Result</span><span class="p">&lt;</span><span class="k">out</span> <span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">data</span> <span class="k">class</span> <span class="nc">Success</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">val</span> <span class="py">data</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">:</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">data</span> <span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="k">val</span> <span class="py">exception</span><span class="p">:</span> <span class="n">Exception</span><span class="p">)</span> <span class="p">:</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">Nothing</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="security-best-practices">Security Best Practices</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Secure data storage
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">fun</span> <span class="nf">storeSecurely</span><span class="p">(</span><span class="k">data</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">encryptedData</span> <span class="p">=</span> <span class="n">encrypt</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">securePreferences</span><span class="p">.</span><span class="n">edit</span><span class="p">().</span><span class="n">putString</span><span class="p">(</span><span class="s2">&#34;key&#34;</span><span class="p">,</span> <span class="n">encryptedData</span><span class="p">).</span><span class="n">apply</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Network security
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">fun</span> <span class="nf">configureNetworkSecurity</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Force HTTPS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">android</span><span class="p">:</span><span class="n">usesCleartextTraffic</span><span class="p">=</span><span class="s2">&#34;false&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Certificate pinning
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">certificatePinner</span> <span class="p">=</span> <span class="nc">CertificatePinner</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;example.com&#34;</span><span class="p">,</span> <span class="s2">&#34;sha256/XXXX=&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="performance-tips">Performance Tips</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Lazy loading
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">val</span> <span class="py">expensiveObject</span> <span class="k">by</span> <span class="n">lazy</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Created only when first accessed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ExpensiveObject</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Efficient image loading
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">fun</span> <span class="nf">loadImageEfficiently</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Glide</span><span class="p">.</span><span class="n">with</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">imageUrl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">transition</span><span class="p">(</span><span class="nc">DrawableTransitionOptions</span><span class="p">.</span><span class="n">withCrossFade</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">diskCacheStrategy</span><span class="p">(</span><span class="nc">DiskCacheStrategy</span><span class="p">.</span><span class="n">ALL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">into</span><span class="p">(</span><span class="n">imageView</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li>Keep up with <a href="https://android-developers.googleblog.com/">Android Developers Blog</a></li>
+<li>Follow <a href="https://developer.android.com/dev-summit">Android Dev Summit</a></li>
+<li>Practice with <a href="https://codelabs.developers.google.com/?cat=Android">Android Code Labs</a></li>
+<li>Read official <a href="https://material.io/design">Material Design Guidelines</a></li>
+<li>Join Android development communities on Reddit and Stack Overflow</li>
+</ul>
+]]></content:encoded>
+    </item>
     <item>
       <title>⚡ Lets Explore Jetpack Compose!</title>
       <link>https://www.codefright.com/posts/jetpack-compose/</link>

@@ -12,7 +12,7 @@
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright 👻</copyright>
-    <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.codefright.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
@@ -22,10 +22,17 @@
       <description></description>
     </item>
     <item>
-      <title>Jetpack Compose</title>
-      <link>https://www.codefright.com/tags/jetpack-compose/</link>
+      <title>Interview</title>
+      <link>https://www.codefright.com/tags/interview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.codefright.com/tags/jetpack-compose/</guid>
+      <guid>https://www.codefright.com/tags/interview/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://www.codefright.com/tags/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/tags/java/</guid>
       <description></description>
     </item>
     <item>
@@ -33,6 +40,20 @@
       <link>https://www.codefright.com/tags/kotlin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Notes</title>
+      <link>https://www.codefright.com/tags/notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/tags/notes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jetpack Compose</title>
+      <link>https://www.codefright.com/tags/jetpack-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/tags/jetpack-compose/</guid>
       <description></description>
     </item>
     <item>
