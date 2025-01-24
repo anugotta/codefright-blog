@@ -12,8 +12,191 @@
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright 👻</copyright>
-    <lastBuildDate>Fri, 03 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.codefright.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>⚡ Getting Started with Kotlin Multiplatform Mobile</title>
+      <link>https://www.codefright.com/posts/kmm-guide/</link>
+      <pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.codefright.com/posts/kmm-guide/</guid>
+      <description>Let&amp;rsquo;s explore how to build your first Kotlin Multiplatform Mobile (KMM) app!
+What is Kotlin Multiplatform Mobile? Think of KMM is like a code-sharing wand that lets you write business logic once in Kotlin and use it on both iOS and Android. It&amp;rsquo;s like having a universal translator for your code - write once, run everywhere (well, on mobile at least)!
+When you use KMM, you get to:
+Share business logic across platforms Keep native UI for the best user experience Reduce duplicate code and potential bugs Speed up development time Setting Up Your Environment First, let&amp;rsquo;s get your development environment ready.</description>
+      <content:encoded><![CDATA[<p>Let&rsquo;s explore how to build your first Kotlin Multiplatform Mobile (KMM) app!</p>
+<h2 id="what-is-kotlin-multiplatform-mobile">What is Kotlin Multiplatform Mobile?</h2>
+<p>Think of KMM is like a code-sharing wand that lets you write business logic once in Kotlin and use it on both iOS and Android. It&rsquo;s like having a universal translator for your code - write once, run everywhere (well, on mobile at least)!</p>
+<p>When you use KMM, you get to:</p>
+<ul>
+<li>Share business logic across platforms</li>
+<li>Keep native UI for the best user experience</li>
+<li>Reduce duplicate code and potential bugs</li>
+<li>Speed up development time</li>
+</ul>
+<h2 id="setting-up-your-environment">Setting Up Your Environment</h2>
+<p>First, let&rsquo;s get your development environment ready. You&rsquo;ll need:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Root build.gradle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">buildscript</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">repositories</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">google</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mavenCentral</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dependencies</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">classpath</span><span class="p">(</span><span class="s2">&#34;org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">classpath</span><span class="p">(</span><span class="s2">&#34;com.android.tools.build:gradle:8.1.0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Your project structure should look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MyKMMProject/
+</span></span><span class="line"><span class="cl">├── androidApp/
+</span></span><span class="line"><span class="cl">├── iosApp/
+</span></span><span class="line"><span class="cl">└── shared/
+</span></span><span class="line"><span class="cl">    ├── src/
+</span></span><span class="line"><span class="cl">        ├── commonMain/
+</span></span><span class="line"><span class="cl">        ├── androidMain/
+</span></span><span class="line"><span class="cl">        └── iosMain/
+</span></span></code></pre></div><h2 id="your-first-shared-code">Your First Shared Code</h2>
+<p>Let&rsquo;s start with something simple - a shared data model:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// commonMain/kotlin/com/example/User.kt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">data</span> <span class="k">class</span> <span class="nc">User</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">email</span><span class="p">:</span> <span class="n">String</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Now, let&rsquo;s add some platform-specific code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// commonMain/kotlin/com/example/Platform.kt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">expect</span> <span class="k">class</span> <span class="nc">Platform</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">platform</span><span class="p">:</span> <span class="n">String</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// androidMain/kotlin/com/example/Platform.kt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">actual</span> <span class="k">class</span> <span class="nc">Platform</span> <span class="k">actual</span> <span class="k">constructor</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">actual</span> <span class="k">val</span> <span class="py">platform</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s2">&#34;Android </span><span class="si">${android.os.Build.VERSION.SDK_INT}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// iosMain/kotlin/com/example/Platform.kt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">actual</span> <span class="k">class</span> <span class="nc">Platform</span> <span class="k">actual</span> <span class="k">constructor</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">actual</span> <span class="k">val</span> <span class="py">platform</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="nc">UIDevice</span><span class="p">.</span><span class="n">currentDevice</span><span class="p">.</span><span class="n">systemName</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="networking-made-easy">Networking Made Easy</h2>
+<p>Here&rsquo;s how to set up a shared network layer using Ktor:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ApiClient</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">httpClient</span> <span class="p">=</span> <span class="n">HttpClient</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">install</span><span class="p">(</span><span class="n">ContentNegotiation</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">fetchUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">httpClient</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s2">&#34;https://api.example.com/users/</span><span class="si">$id</span><span class="s2">&#34;</span><span class="p">).</span><span class="n">body</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="platform-specific-ui">Platform-Specific UI</h2>
+<h3 id="android-ui">Android UI</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="n">ComponentActivity</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">setContent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">UserProfile</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">UserProfile</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">user</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">&lt;</span><span class="n">User</span><span class="p">?&gt;(</span><span class="k">null</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">Unit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user</span> <span class="p">=</span> <span class="n">ApiClient</span><span class="p">().</span><span class="n">fetchUser</span><span class="p">(</span><span class="s2">&#34;123&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">Column</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="n">user</span><span class="o">?.</span><span class="n">name</span> <span class="o">?:</span> <span class="s2">&#34;Loading...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="n">user</span><span class="o">?.</span><span class="n">email</span> <span class="o">?:</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="ios-ui">iOS UI</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">struct</span> <span class="nc">ContentView</span><span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">@</span><span class="n">State</span> <span class="kd">private</span> <span class="kd">var</span> <span class="nv">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">VStack</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="n">user</span><span class="p">?.</span><span class="n">name</span> <span class="p">??</span> <span class="s">&#34;Loading...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="n">user</span><span class="p">?.</span><span class="n">email</span> <span class="p">??</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">onAppear</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ApiClient</span><span class="p">().</span><span class="n">fetchUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="s">&#34;123&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="n">fetchedUser</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">                <span class="n">user</span> <span class="p">=</span> <span class="n">fetchedUser</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="common-pitfalls-to-watch-out-for">Common Pitfalls to Watch Out For</h2>
+<ol>
+<li><strong>The Threading Trap</strong>: Remember that each platform handles threading differently. Use Dispatchers.Default for shared code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UserRepository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">getUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Default</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Safe to call from any platform
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">api</span><span class="p">.</span><span class="n">fetchUser</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>The Memory Maze</strong>: iOS and Android handle memory differently. Use weak references when needed:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// In shared code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">SharedViewModel</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">_state</span> <span class="p">=</span> <span class="n">MutableStateFlow</span><span class="p">&lt;</span><span class="n">User</span><span class="p">?&gt;(</span><span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">state</span> <span class="p">=</span> <span class="n">_state</span><span class="p">.</span><span class="n">asStateFlow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="3">
+<li><strong>The Platform Puzzle</strong>: Don&rsquo;t access platform-specific APIs in common code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T do this in commonMain
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">getPlatformVersion</span><span class="p">()</span> <span class="p">=</span> <span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION</span><span class="p">.</span><span class="n">SDK_INT</span> <span class="c1">// Won&#39;t work!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// DO this instead
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">expect</span> <span class="k">fun</span> <span class="nf">getPlatformVersion</span><span class="p">():</span> <span class="n">String</span>
+</span></span><span class="line"><span class="cl"><span class="k">actual</span> <span class="k">fun</span> <span class="nf">getPlatformVersion</span><span class="p">()</span> <span class="p">=</span> <span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION</span><span class="p">.</span><span class="nc">SDK_INT</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="real-world-example-image-loading">Real-World Example: Image Loading</h2>
+<p>Here&rsquo;s a practical example of an image loader that works across platforms:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">interface</span> <span class="nc">ImageLoader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">ImageBitmap</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AndroidImageLoader</span> <span class="p">:</span> <span class="n">ImageLoader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">ImageBitmap</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">        <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">URL</span><span class="p">(</span><span class="n">url</span><span class="p">).</span><span class="n">openStream</span><span class="p">().</span><span class="n">use</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">                <span class="nc">BitmapFactory</span><span class="p">.</span><span class="n">decodeStream</span><span class="p">(</span><span class="k">it</span><span class="p">).</span><span class="n">asImageBitmap</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IosImageLoader</span> <span class="p">:</span> <span class="n">ImageLoader</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">ImageBitmap</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">        <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Default</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">NSUrl</span><span class="p">(</span><span class="n">string</span> <span class="p">=</span> <span class="n">url</span><span class="p">)</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span> <span class="n">nsUrl</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">NSData</span><span class="p">.</span><span class="n">dataWithContentsOfURL</span><span class="p">(</span><span class="n">nsUrl</span><span class="p">)</span><span class="o">?.</span><span class="n">toUIImage</span><span class="p">()</span><span class="o">?.</span><span class="n">toImageBitmap</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="o">?:</span> <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;Invalid URL&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="testing-your-kmm-code">Testing Your KMM Code</h2>
+<p>Here&rsquo;s how to test your shared code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UserRepositoryTest</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">testFetchUser</span><span class="p">()</span> <span class="p">=</span> <span class="n">runTest</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">repository</span> <span class="p">=</span> <span class="n">UserRepository</span><span class="p">(</span><span class="n">mockApi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">user</span> <span class="p">=</span> <span class="n">repository</span><span class="p">.</span><span class="n">getUser</span><span class="p">(</span><span class="s2">&#34;123&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="s2">&#34;John Doe&#34;</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>KMM can easily help you reduce your cross-platform app development time and effort by a lot!</p>
+<p>Also don&rsquo;t forget to check out the official KMM documentation for more advanced topics.</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>⚡ Android Developer Interview Guide</title>
       <link>https://www.codefright.com/posts/interview-guide/</link>
@@ -1353,7 +1536,7 @@ A special animation effect A unique user interaction That perfect design your UI
 <li><a href="https://material.io/design">Material Design Guidelines</a></li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
-<p>Custom views are like cooking - start with the basic recipe, then add your own flavors. Don&rsquo;t be afraid to experiment, but always keep performance in mind. Your users (and the Android UI thread) will thank you!</p>
+<p>Custom views are like cooking - start with the basic recipe, then add your own flavors!</p>
 <p>Stay tuned for more Android development articles!</p>
 ]]></content:encoded>
     </item>
@@ -1452,7 +1635,7 @@ Waiting for I/O operations to complete (like reading from a file or making a net
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="the-cool-benefits-of-coroutines">The Cool Benefits of Coroutines</h2>
+</span></span></code></pre></div><h2 id="the-benefits-of-coroutines">The Benefits of Coroutines</h2>
 <p>Why should you fall in love with coroutines? Here&rsquo;s why:</p>
 <ol>
 <li>
@@ -1493,7 +1676,7 @@ Waiting for I/O operations to complete (like reading from a file or making a net
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">comments</span> <span class="p">=</span> <span class="n">fetchPostComments</span><span class="p">(</span><span class="n">posts</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">id</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Clean and simple!
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><h2 id="watch-out-for-these-gotchas">Watch Out For These Gotchas!</h2>
+</span></span></code></pre></div><h2 id="watch-out-for-these">Watch Out For These!</h2>
 <p>Here are some common pitfalls to watch out for:</p>
 <ol>
 <li>
@@ -1610,7 +1793,7 @@ Waiting for I/O operations to complete (like reading from a file or making a net
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
-<p>Understanding Coroutines might seem difficult at first, but once you get the hang of them, you&rsquo;ll wonder how you ever lived without them. They provide a powerful way to handle asynchronous operations with clean, readable code that&rsquo;s both efficient and maintainable.</p>
+<p>Understanding Coroutines might seem difficult at first, but once you get the hang of them, you&rsquo;ll wonder how you ever lived without them. They provide a powerful way to handle asynchronous operations with clean, readable code that&rsquo;s efficient and maintainable.</p>
 <p>Don&rsquo;t forget to checkout my other articles!</p>
 ]]></content:encoded>
     </item>

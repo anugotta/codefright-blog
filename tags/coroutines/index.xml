@@ -109,7 +109,7 @@ Waiting for I/O operations to complete (like reading from a file or making a net
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="the-cool-benefits-of-coroutines">The Cool Benefits of Coroutines</h2>
+</span></span></code></pre></div><h2 id="the-benefits-of-coroutines">The Benefits of Coroutines</h2>
 <p>Why should you fall in love with coroutines? Here&rsquo;s why:</p>
 <ol>
 <li>
@@ -150,7 +150,7 @@ Waiting for I/O operations to complete (like reading from a file or making a net
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">comments</span> <span class="p">=</span> <span class="n">fetchPostComments</span><span class="p">(</span><span class="n">posts</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">id</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Clean and simple!
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><h2 id="watch-out-for-these-gotchas">Watch Out For These Gotchas!</h2>
+</span></span></code></pre></div><h2 id="watch-out-for-these">Watch Out For These!</h2>
 <p>Here are some common pitfalls to watch out for:</p>
 <ol>
 <li>
@@ -267,7 +267,7 @@ Waiting for I/O operations to complete (like reading from a file or making a net
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
-<p>Understanding Coroutines might seem difficult at first, but once you get the hang of them, you&rsquo;ll wonder how you ever lived without them. They provide a powerful way to handle asynchronous operations with clean, readable code that&rsquo;s both efficient and maintainable.</p>
+<p>Understanding Coroutines might seem difficult at first, but once you get the hang of them, you&rsquo;ll wonder how you ever lived without them. They provide a powerful way to handle asynchronous operations with clean, readable code that&rsquo;s efficient and maintainable.</p>
 <p>Don&rsquo;t forget to checkout my other articles!</p>
 ]]></content:encoded>
     </item>
