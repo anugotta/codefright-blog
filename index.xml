@@ -1901,13 +1901,14 @@ Successfully developed and published over 25 apps on PlayStore, including apps w
 ]]></content:encoded>
     </item>
     <item>
-      <title>Featured Projects</title>
+      <title>Projects</title>
       <link>https://www.codefright.com/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/projects/</guid>
-      <description>Open source projects and contributions in Android, Kotlin, and Flutter</description>
-      <content:encoded><![CDATA[<h2 id="library-projects">Library Projects</h2>
-<h3 id="fliptimerviewhttpsgithubcomanugottafliptimerview"><a href="https://github.com/anugotta/FlipTimerView">FlipTimerView</a></h3>
+      <description>FlipTimerView A customizable flip animation timer library for Android, developed in Kotlin.
+Simple flip animation with customizable duration Support for days, hours, minutes and seconds http_cyclic_mocks A lightweight Dart library for mocking HTTP responses with Dio. Mock Multiple Responses for single route / endpoint.
+Support for multiple responses per endpoint Cyclic response patterns Easy integration with existing Dio setup Perfect for testing and development KinderScript [Work in Progress] A simple terminal based child-friendly programming language for learning coding basics.</description>
+      <content:encoded><![CDATA[<h3 id="fliptimerviewhttpsgithubcomanugottafliptimerview"><a href="https://github.com/anugotta/FlipTimerView">FlipTimerView</a></h3>
 <p>A customizable flip animation timer library for Android, developed in Kotlin.</p>
 <ul>
 <li>Simple flip animation with customizable duration</li>
@@ -1921,8 +1922,6 @@ Successfully developed and published over 25 apps on PlayStore, including apps w
 <li>Easy integration with existing Dio setup</li>
 <li>Perfect for testing and development</li>
 </ul>
-<hr>
-<h2 id="hobby-projects">Hobby Projects</h2>
 <h3 id="kinderscripthttpsgithubcomanugottakinderscript"><a href="https://github.com/anugotta/KinderScript">KinderScript</a></h3>
 <p>[Work in Progress] A simple terminal based child-friendly programming language for learning coding basics. Developed completely in Kotlin.</p>
 <ul>
