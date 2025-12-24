@@ -4,6 +4,11 @@
     <title>KMM on &lt;/&gt; codeFright 🎃</title>
     <link>https://www.codefright.com/tags/kmm/</link>
     <description>Recent content in KMM on &lt;/&gt; codeFright 🎃</description>
+    <image>
+      <title>&lt;/&gt; codeFright 🎃</title>
+      <url>https://www.codefright.com/static/logo.png</url>
+      <link>https://www.codefright.com/static/logo.png</link>
+    </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright 👻</copyright>
@@ -14,20 +19,24 @@
       <link>https://www.codefright.com/posts/kmm-guide/</link>
       <pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/kmm-guide/</guid>
-      <description>Build cross-platform mobile apps with Kotlin Multiplatform Mobile (KMM). Learn to share business logic between Android and iOS while keeping native UIs.</description>
-      <content:encoded><![CDATA[<p>Been working with KMM for a while. Used it on a project where we needed to share business logic between Android and iOS while keeping native UIs. Worked out well, had some bumps along the way.</p>
+      <description>Let&amp;rsquo;s explore how to build your first Kotlin Multiplatform Mobile (KMM) app!
+What is Kotlin Multiplatform Mobile? Think of KMM is like a code-sharing wand that lets you write business logic once in Kotlin and use it on both iOS and Android. It&amp;rsquo;s like having a universal translator for your code - write once, run everywhere (well, on mobile at least)!
+When you use KMM, you get to:
+Share business logic across platforms Keep native UI for the best user experience Reduce duplicate code and potential bugs Speed up development time Setting Up Your Environment First, let&amp;rsquo;s get your development environment ready.</description>
+      <content:encoded><![CDATA[<p>Let&rsquo;s explore how to build your first Kotlin Multiplatform Mobile (KMM) app!</p>
 <h2 id="what-is-kotlin-multiplatform-mobile">What is Kotlin Multiplatform Mobile?</h2>
-<p>KMM lets you write business logic in Kotlin and share it between Android and iOS. You keep native UIs on each platform, which is important for performance and user experience. The shared code handles things like API calls, data models, and business rules.</p>
-<p>The main benefits:</p>
+<p>Think of KMM is like a code-sharing wand that lets you write business logic once in Kotlin and use it on both iOS and Android. It&rsquo;s like having a universal translator for your code - write once, run everywhere (well, on mobile at least)!</p>
+<p>When you use KMM, you get to:</p>
 <ul>
-<li>Write business logic once, use it on both platforms</li>
-<li>Keep native UIs for better performance</li>
-<li>Less code duplication means fewer bugs</li>
-<li>Faster development when you need features on both platforms</li>
+<li>Share business logic across platforms</li>
+<li>Keep native UI for the best user experience</li>
+<li>Reduce duplicate code and potential bugs</li>
+<li>Speed up development time</li>
 </ul>
-<h2 id="setting-up-your-project">Setting Up Your Project</h2>
-<p>Setting up a KMM project can be tricky the first time. What you need in root <code>build.gradle</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">buildscript</span> <span class="p">{</span>
+<h2 id="setting-up-your-environment">Setting Up Your Environment</h2>
+<p>First, let&rsquo;s get your development environment ready. You&rsquo;ll need:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Root build.gradle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">buildscript</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">repositories</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">google</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">        <span class="n">mavenCentral</span><span class="p">()</span>
@@ -37,7 +46,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">classpath</span><span class="p">(</span><span class="s2">&#34;com.android.tools.build:gradle:8.1.0&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The project structure is important. It should look like this:</p>
+</span></span></code></pre></div><p>Your project structure should look like this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MyKMMProject/
 </span></span><span class="line"><span class="cl">├── androidApp/
 </span></span><span class="line"><span class="cl">├── iosApp/
@@ -46,15 +55,15 @@
 </span></span><span class="line"><span class="cl">        ├── commonMain/
 </span></span><span class="line"><span class="cl">        ├── androidMain/
 </span></span><span class="line"><span class="cl">        └── iosMain/
-</span></span></code></pre></div><h2 id="writing-your-first-shared-code">Writing Your First Shared Code</h2>
-<p>Simplest thing to share is data models. These work the same on both platforms:</p>
+</span></span></code></pre></div><h2 id="your-first-shared-code">Your First Shared Code</h2>
+<p>Let&rsquo;s start with something simple - a shared data model:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// commonMain/kotlin/com/example/User.kt
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">data</span> <span class="k">class</span> <span class="nc">User</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">email</span><span class="p">:</span> <span class="n">String</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></div><p>For platform-specific code, you use <code>expect</code> and <code>actual</code>. This is how you access platform APIs:</p>
+</span></span></code></pre></div><p>Now, let&rsquo;s add some platform-specific code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// commonMain/kotlin/com/example/Platform.kt
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">expect</span> <span class="k">class</span> <span class="nc">Platform</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">platform</span><span class="p">:</span> <span class="n">String</span>
@@ -69,8 +78,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">actual</span> <span class="k">class</span> <span class="nc">Platform</span> <span class="k">actual</span> <span class="k">constructor</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">actual</span> <span class="k">val</span> <span class="py">platform</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="nc">UIDevice</span><span class="p">.</span><span class="n">currentDevice</span><span class="p">.</span><span class="n">systemName</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="shared-networking-with-ktor">Shared Networking with Ktor</h2>
-<p>For networking, use Ktor. Works well with KMM. Basic setup:</p>
+</span></span></code></pre></div><h2 id="networking-made-easy">Networking Made Easy</h2>
+<p>Here&rsquo;s how to set up a shared network layer using Ktor:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ApiClient</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">httpClient</span> <span class="p">=</span> <span class="n">HttpClient</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">install</span><span class="p">(</span><span class="n">ContentNegotiation</span><span class="p">)</span> <span class="p">{</span>
@@ -123,27 +132,35 @@
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="issues-i-ran-into">Issues I Ran Into</h2>
-<p><strong>1. Threading differences</strong></p>
-<p>Android and iOS handle threads differently. Code that worked on Android crashed on iOS. For shared code, use <code>Dispatchers.Default</code>:</p>
+</span></span></code></pre></div><h2 id="common-pitfalls-to-watch-out-for">Common Pitfalls to Watch Out For</h2>
+<ol>
+<li><strong>The Threading Trap</strong>: Remember that each platform handles threading differently. Use Dispatchers.Default for shared code:</li>
+</ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UserRepository</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">getUser</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">Default</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// This works on both platforms
+</span></span><span class="line"><span class="cl">        <span class="c1">// Safe to call from any platform
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">api</span><span class="p">.</span><span class="n">fetchUser</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><strong>2. Memory management</strong></p>
-<p>iOS uses ARC, Android uses garbage collection. Different, but for most shared code you don&rsquo;t need to worry. Just be aware memory behavior might differ slightly.</p>
-<p><strong>3. Platform-specific APIs</strong></p>
-<p>Can&rsquo;t use Android or iOS APIs directly in shared code. Seems obvious, but tried it anyway:</p>
+</span></span></code></pre></div><ol start="2">
+<li><strong>The Memory Maze</strong>: iOS and Android handle memory differently. Use weak references when needed:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// In shared code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">SharedViewModel</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">val</span> <span class="py">_state</span> <span class="p">=</span> <span class="n">MutableStateFlow</span><span class="p">&lt;</span><span class="n">User</span><span class="p">?&gt;(</span><span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">state</span> <span class="p">=</span> <span class="n">_state</span><span class="p">.</span><span class="n">asStateFlow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="3">
+<li><strong>The Platform Puzzle</strong>: Don&rsquo;t access platform-specific APIs in common code:</li>
+</ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T do this in commonMain
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">getPlatformVersion</span><span class="p">()</span> <span class="p">=</span> <span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION</span><span class="p">.</span><span class="n">SDK_INT</span> <span class="c1">// Won&#39;t work!
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="c1">// DO this instead
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">expect</span> <span class="k">fun</span> <span class="nf">getPlatformVersion</span><span class="p">():</span> <span class="n">String</span>
 </span></span><span class="line"><span class="cl"><span class="k">actual</span> <span class="k">fun</span> <span class="nf">getPlatformVersion</span><span class="p">()</span> <span class="p">=</span> <span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION</span><span class="p">.</span><span class="nc">SDK_INT</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
-</span></span></code></pre></div><h2 id="example-image-loading">Example: Image Loading</h2>
-<p>Needed to load images in shared code. How we handled it:</p>
+</span></span></code></pre></div><h2 id="real-world-example-image-loading">Real-World Example: Image Loading</h2>
+<p>Here&rsquo;s a practical example of an image loader that works across platforms:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">interface</span> <span class="nc">ImageLoader</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">ImageBitmap</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -165,8 +182,8 @@
 </span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="o">?:</span> <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;Invalid URL&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="testing-shared-code">Testing Shared Code</h2>
-<p>Testing KMM code is straightforward - it&rsquo;s just Kotlin, use standard testing libraries:</p>
+</span></span></code></pre></div><h2 id="testing-your-kmm-code">Testing Your KMM Code</h2>
+<p>Here&rsquo;s how to test your shared code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UserRepositoryTest</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">testFetchUser</span><span class="p">()</span> <span class="p">=</span> <span class="n">runTest</span> <span class="p">{</span>
@@ -175,11 +192,9 @@
 </span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="s2">&#34;John Doe&#34;</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="my-take-on-kmm">My Take on KMM</h2>
-<p>KMM isn&rsquo;t perfect. Tooling can be rough, especially for iOS. Setting up the project takes time, debugging can be tricky when something works on one platform but not the other. When it works, it&rsquo;s great - write business logic once, runs on both platforms.</p>
-<p>Is it worth it? For us, yes. Had complex business logic that needed to be identical on both platforms. KMM let us write it once and test it once, saved a lot of time.</p>
-<p>If building a simple app, KMM might be overkill. If you have complex shared logic, worth considering. Ecosystem is still evolving, getting better.</p>
-<p>Check out the official KMM documentation for more details.</p>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>KMM can easily help you reduce your cross-platform app development time and effort by a lot!</p>
+<p>Also don&rsquo;t forget to check out the official KMM documentation for more advanced topics.</p>
 ]]></content:encoded>
     </item>
   </channel>
