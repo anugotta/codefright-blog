@@ -4,11 +4,6 @@
     <title>UI on &lt;/&gt; codeFright 🎃</title>
     <link>https://www.codefright.com/tags/ui/</link>
     <description>Recent content in UI on &lt;/&gt; codeFright 🎃</description>
-    <image>
-      <title>&lt;/&gt; codeFright 🎃</title>
-      <url>https://www.codefright.com/static/logo.png</url>
-      <link>https://www.codefright.com/static/logo.png</link>
-    </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright 👻</copyright>
@@ -19,19 +14,20 @@
       <link>https://www.codefright.com/posts/custom-views/</link>
       <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/custom-views/</guid>
-      <description>Remember that time you needed a widget that Android doesn&amp;rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite beverage, because we&amp;rsquo;re about to dive into the world of custom views!
-Why Create Custom Views? Sometimes the standard Android widgets just don&amp;rsquo;t cut it. Maybe you need:
-A special animation effect A unique user interaction That perfect design your UI/UX team dreamed up The Basics: Anatomy of a Custom View Here&amp;rsquo;s a simple custom view that draws a circle that changes color when touched:</description>
-      <content:encoded><![CDATA[<p>Remember that time you needed a widget that Android doesn&rsquo;t provide out of the box? Maybe a circular progress bar that looks like a pizza being eaten? Well, grab your favorite beverage, because we&rsquo;re about to dive into the world of custom views!</p>
-<h2 id="why-create-custom-views">Why Create Custom Views?</h2>
-<p>Sometimes the standard Android widgets just don&rsquo;t cut it. Maybe you need:</p>
+      <description>Master custom views in Android! Learn to create custom UI components, handle touch events, implement animations, and optimize performance with practical examples.</description>
+      <content:encoded><![CDATA[<p>Built a lot of custom views over the years. Sometimes because Android doesn&rsquo;t have what you need, sometimes because design team wants something specific. Made progress bars, custom buttons, animated indicators.</p>
+<p>Custom views can be intimidating at first. Lots to learn - measurement, layout, drawing, touch handling. Once you understand the basics, you can build almost anything.</p>
+<h2 id="when-do-you-need-custom-views">When Do You Need Custom Views?</h2>
+<p>Standard Android widgets cover most cases, but sometimes you need something custom:</p>
 <ul>
-<li>A special animation effect</li>
-<li>A unique user interaction</li>
-<li>That perfect design your UI/UX team dreamed up</li>
+<li>Unique animations or visual effects</li>
+<li>Custom touch interactions</li>
+<li>Complex layouts that are hard to achieve with standard views</li>
+<li>Performance-critical UI that needs fine control</li>
 </ul>
-<h2 id="the-basics-anatomy-of-a-custom-view">The Basics: Anatomy of a Custom View</h2>
-<p>Here&rsquo;s a simple custom view that draws a circle that changes color when touched:</p>
+<p>Used custom views for circular progress indicators, custom sliders, animated backgrounds. Powerful when you need them.</p>
+<h2 id="a-simple-example">A Simple Example</h2>
+<p>Basic example - a view that draws a circle and changes color when touched. Covers the fundamentals:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ColorChangeCircleView</span> <span class="nd">@JvmOverloads</span> <span class="k">constructor</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">attrs</span><span class="p">:</span> <span class="n">AttributeSet</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
@@ -75,9 +71,8 @@ A special animation effect A unique user interaction That perfect design your UI
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="n">onTouchEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="understanding-the-view-lifecycle">Understanding the View Lifecycle</h2>
-<h3 id="measurement-and-layout">Measurement and Layout</h3>
-<p>The view lifecycle is crucial for proper rendering. Here&rsquo;s how to handle measurement and layout:</p>
+</span></span></code></pre></div><h2 id="measurement-and-layout">Measurement and Layout</h2>
+<p>Understanding how views measure and layout themselves is crucial. How it works:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onMeasure</span><span class="p">(</span><span class="n">widthMeasureSpec</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">heightMeasureSpec</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Calculate the ideal size of the view based on content
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">desiredWidth</span> <span class="p">=</span> <span class="n">suggestedMinimumWidth</span> <span class="p">+</span> <span class="n">paddingLeft</span> <span class="p">+</span> <span class="n">paddingRight</span>
@@ -224,36 +219,35 @@ A special animation effect A unique user interaction That perfect design your UI
 </span></span><span class="line"><span class="cl">    <span class="n">info</span><span class="p">.</span><span class="n">addAction</span><span class="p">(</span><span class="nc">AccessibilityNodeInfo</span><span class="p">.</span><span class="n">ACTION_CLICK</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="performance-tips">Performance Tips</h2>
-<ol>
-<li><strong>Avoid Object Creation in onDraw()</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// BAD
+<p>Performance mistakes I made with custom views:</p>
+<p><strong>Don&rsquo;t create objects in onDraw()</strong></p>
+<p><code>onDraw()</code> gets called a lot. Creating objects there will cause garbage collection, which leads to jank:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// This is bad - creates a new Paint every frame
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">()</span> <span class="c1">// Don&#39;t do this!
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.,</span> <span class="n">paint</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// GOOD
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">()</span> <span class="c1">// Create once in initialization
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Do this instead - create once, reuse
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span> <span class="k">val</span> <span class="py">paint</span> <span class="p">=</span> <span class="n">Paint</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">canvas</span><span class="p">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="o">..</span><span class="p">.,</span> <span class="n">paint</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><ol start="2">
-<li><strong>Use Hardware Acceleration</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">android:hardwareAccelerated=&#34;true&#34;
-</span></span></code></pre></div><ol start="3">
-<li><strong>Optimize Invalidation</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Only invalidate the necessary area
+</span></span></code></pre></div><p><strong>Use hardware acceleration</strong></p>
+<p>Enable it in your manifest or activity. It makes drawing much faster:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;activity</span> <span class="na">android:hardwareAccelerated=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></div><p><strong>Invalidate efficiently</strong></p>
+<p>Only invalidate what changed. If only part of your view needs redrawing, use the version that takes coordinates:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Invalidate the whole view (slower)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">invalidate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Invalidate just a region (faster)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">invalidate</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Use post for thread-safe invalidation
+</span></span><span class="line"><span class="cl"><span class="c1">// For thread safety
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">postInvalidate</span><span class="p">()</span>
-</span></span></code></pre></div><h2 id="debugging-tips">Debugging Tips</h2>
-<ol>
-<li>Debug draw mode:</li>
-</ol>
+</span></span></code></pre></div><h2 id="debugging-custom-views">Debugging Custom Views</h2>
+<p>Debugging custom views can be frustrating. Some tricks:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="n">Canvas</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nc">BuildConfig</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span> <span class="p">{</span>
@@ -338,9 +332,11 @@ A special animation effect A unique user interaction That perfect design your UI
 <li><a href="https://source.android.com/devices/graphics/architecture">Android Graphics Architecture</a></li>
 <li><a href="https://material.io/design">Material Design Guidelines</a></li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>Custom views are like cooking - start with the basic recipe, then add your own flavors!</p>
-<p>Stay tuned for more Android development articles!</p>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>Custom views are powerful, but have a learning curve. Start simple - draw a shape, handle a touch event. Then gradually add complexity. Don&rsquo;t try to build something complex on first try.</p>
+<p>Key is understanding the lifecycle: measurement, layout, and drawing. Once you get those, you can build almost anything.</p>
+<p>If building a custom view and run into issues, Android documentation is helpful. Don&rsquo;t forget about performance - profile your view to make sure it&rsquo;s not causing jank.</p>
+<p>Check out my other Android articles.</p>
 ]]></content:encoded>
     </item>
   </channel>

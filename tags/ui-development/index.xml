@@ -4,44 +4,36 @@
     <title>UI Development on &lt;/&gt; codeFright 🎃</title>
     <link>https://www.codefright.com/tags/ui-development/</link>
     <description>Recent content in UI Development on &lt;/&gt; codeFright 🎃</description>
-    <image>
-      <title>&lt;/&gt; codeFright 🎃</title>
-      <url>https://www.codefright.com/static/logo.png</url>
-      <link>https://www.codefright.com/static/logo.png</link>
-    </image>
     <generator>Hugo -- 0.126.1</generator>
     <language>en-us</language>
     <copyright>2025 codeFright 👻</copyright>
     <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.codefright.com/tags/ui-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>⚡ Lets Explore Jetpack Compose!</title>
+      <title>⚡ Let&#39;s Explore Jetpack Compose!</title>
       <link>https://www.codefright.com/posts/jetpack-compose/</link>
       <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://www.codefright.com/posts/jetpack-compose/</guid>
-      <description>Hey! Let&amp;rsquo;s explore Jetpack Compose and see how it makes Android UI development more enjoyable.
-What is Jetpack Compose? Compose is just a different way to build your app&amp;rsquo;s UI. Instead of writing XML layouts and then manipulating them with code, you write Kotlin functions that describe your UI. It&amp;rsquo;s that simple.
-Getting Started First, add these to your build.gradle:
-dependencies { implementation &amp;#34;androidx.compose.ui:ui:1.5.4&amp;#34; implementation &amp;#34;androidx.compose.material:material:1.5.4&amp;#34; implementation &amp;#34;androidx.compose.ui:ui-tooling-preview:1.5.4&amp;#34; } Your First Composable Let&amp;rsquo;s write something simple:</description>
-      <content:encoded><![CDATA[<p>Hey! Let&rsquo;s explore Jetpack Compose and see how it makes Android UI development more enjoyable.</p>
+      <description>Discover Jetpack Compose - the modern way to build Android UIs. Learn composables, state management, modifiers, and best practices with practical examples.</description>
+      <content:encoded><![CDATA[<p>Been using XML for Android UIs for over a decade. When Jetpack Compose came out, I was very interested to learn this. After using it in production for a couple of years, I prefer it over XML for most cases.</p>
 <h2 id="what-is-jetpack-compose">What is Jetpack Compose?</h2>
-<p>Compose is just a different way to build your app&rsquo;s UI. Instead of writing XML layouts and then manipulating them with code, you write Kotlin functions that describe your UI. It&rsquo;s that simple.</p>
+<p>Compose lets you build UIs using Kotlin functions instead of XML. You write functions that return UI instead of layout files. It&rsquo;s declarative - you describe what you want, Compose handles the rendering.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>First, add these to your <code>build.gradle</code>:</p>
+<p>Add these dependencies to use Compose. Using version 1.5.4 here, check for latest:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.compose.ui:ui:1.5.4&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.compose.material:material:1.5.4&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s2">&#34;androidx.compose.ui:ui-tooling-preview:1.5.4&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="your-first-composable">Your First Composable</h2>
-<p>Let&rsquo;s write something simple:</p>
+<p>Simple composable example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">WelcomeText</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Hey </span><span class="si">$name</span><span class="s2">, welcome to Compose!&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>That&rsquo;s it! The <code>@Composable</code> annotation tells Compose that this function outputs UI elements. You can use it like any regular Kotlin function.</p>
-<h2 id="state-making-things-interactive">State: Making Things Interactive</h2>
-<p>State in Compose is just data that can change over time. When it changes, Compose updates your UI automatically:</p>
+</span></span></code></pre></div><p>The <code>@Composable</code> annotation makes it work. Compose tracks the function and manages its lifecycle. Call it like any function, it renders UI instead of returning a value.</p>
+<h2 id="state-management">State Management</h2>
+<p>When state changes, Compose automatically recomposes the affected UI parts. Simple counter example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">count</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">}</span>
@@ -53,8 +45,8 @@ dependencies { implementation &amp;#34;androidx.compose.ui:ui:1.5.4&amp;#34; imp
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="modifiers-styling-your-ui">Modifiers: Styling Your UI</h2>
-<p>Modifiers are like CSS for your composables. They let you change how things look and behave:</p>
+</span></span></code></pre></div><h2 id="modifiers">Modifiers</h2>
+<p>Modifiers apply styling and behavior to composables. They work as a chain of transformations. Order matters - <code>padding().fillMaxWidth()</code> is different from <code>fillMaxWidth().padding()</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">StyledButton</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
@@ -70,34 +62,42 @@ dependencies { implementation &amp;#34;androidx.compose.ui:ui:1.5.4&amp;#34; imp
 </span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="common-gotchas-to-watch-out-for">Common Gotchas to Watch Out For</h2>
-<ol>
-<li><strong>State Reset</strong>: Don&rsquo;t declare state outside composable functions:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T do this
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">var</span> <span class="py">count</span> <span class="p">=</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="c1">// Will reset on recomposition
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// DO this instead
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">var</span> <span class="py">count</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">}</span>
-</span></span></code></pre></div><ol start="2">
-<li><strong>Wrong Thread</strong>: UI updates must happen on the main thread:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// DON&#39;T do this
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">key1</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// UI updates here will crash
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></code></pre></div><h2 id="common-mistakes">Common Mistakes</h2>
+<p><strong>1. Forgetting <code>remember</code> for state</strong></p>
+<p>If you don&rsquo;t use <code>remember</code>, state resets every time the composable recomposes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// This won&#39;t work - count resets to 0 on every recomposition
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">count</span> <span class="p">=</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="c1">// Bad!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="n">count</span><span class="p">.</span><span class="k">value</span><span class="o">++</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Count: </span><span class="si">${count.value}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// DO this instead
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">key1</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// Do background work
+</span></span><span class="line"><span class="cl"><span class="c1">// This works - state persists across recompositions
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Composable</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">var</span> <span class="py">count</span> <span class="k">by</span> <span class="n">remember</span> <span class="p">{</span> <span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">}</span> <span class="c1">// Good!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="n">count</span><span class="o">++</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;Count: </span><span class="si">$count</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>2. Updating UI from background thread</strong></p>
+<p>Compose UI must be updated from the main thread. This will crash your app:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">LaunchedEffect</span><span class="p">(</span><span class="n">key1</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="n">IO</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Fetching data on background thread - good
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="py">data</span> <span class="p">=</span> <span class="n">api</span><span class="p">.</span><span class="n">fetchData</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// But you can&#39;t update state here - it will crash
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// uiState = data // DON&#39;T DO THIS
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Update UI on main thread
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><h2 id="real-world-example-a-user-card">Real World Example: A User Card</h2>
-<p>Here&rsquo;s how you might build a user profile card:</p>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Update state here, on the main thread
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">uiState</span> <span class="p">=</span> <span class="k">data</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="example-user-profile-card">Example: User Profile Card</h2>
+<p>Built something similar for a project. Simplified version:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="nd">@Composable</span>
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">UserCard</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Card</span><span class="p">(</span>
@@ -135,23 +135,32 @@ dependencies { implementation &amp;#34;androidx.compose.ui:ui:1.5.4&amp;#34; imp
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="why-use-compose">Why Use Compose?</h2>
-<ol>
-<li><strong>Less Code</strong>: No more XML layouts or view binding</li>
-<li><strong>Preview Support</strong>: See your UI changes instantly in Android Studio</li>
-<li><strong>Reusable Components</strong>: Easy to create and share UI components</li>
-<li><strong>State Management</strong>: Automatic UI updates when data changes</li>
-</ol>
-<h2 id="useful-tips">Useful Tips</h2>
-<ol>
-<li>Break down large composables into smaller ones</li>
-<li>Use previews for quick iteration</li>
-<li>Keep state at the appropriate level</li>
-<li>Use appropriate scopes for side effects</li>
-</ol>
-<h2 id="conclusion">Conclusion</h2>
-<p>Compose might feel different at first, but it makes UI development much more straightforward once you get used to it. Start with small components, understand how state works, and you&rsquo;ll be building complex UIs in no time.</p>
-<p>Don&rsquo;t forget to check out my other articles!</p>
+</span></span></code></pre></div><h2 id="why-use-compose">Why Use Compose</h2>
+<p>Main benefits:</p>
+<p><strong>Less boilerplate</strong> - No findViewById, no view binding setup, no XML files. Everything in Kotlin.</p>
+<p><strong>Live previews</strong> - Preview composables directly in Android Studio. Speeds up development.</p>
+<p><strong>Easier to reuse</strong> - Composable functions are just functions. Reuse a component by calling the function. No custom views or include layouts needed.</p>
+<p><strong>Better state management</strong> - When state changes, only affected composables recompose. More efficient than invalidating entire view hierarchies.</p>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>
+<p><strong>Break things down</strong> - If a composable is getting long, split into smaller functions. Try to keep under 50 lines.</p>
+</li>
+<li>
+<p><strong>Use previews</strong> - The <code>@Preview</code> annotation helps. Use it to see UI without running the app.</p>
+</li>
+<li>
+<p><strong>Hoist state up</strong> - Keep state as high in hierarchy as possible. Only put it where needed.</p>
+</li>
+<li>
+<p><strong>Learn LaunchedEffect</strong> - Handles side effects like API calls. Essential for real apps.</p>
+</li>
+</ul>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Compose has a learning curve, especially coming from XML. Mental model is different - you&rsquo;re describing UI, not building a view hierarchy. Once it clicks, you&rsquo;ll build UIs faster.</p>
+<p>Start with a small feature, maybe a single screen. Don&rsquo;t convert your entire app at once. Get comfortable with basics - composables, state, modifiers - then explore advanced topics like animations and custom layouts.</p>
+<p>Compose documentation is good. Community is helpful too.</p>
+<p>Check out my other Android articles if you want to learn more.</p>
 ]]></content:encoded>
     </item>
   </channel>
