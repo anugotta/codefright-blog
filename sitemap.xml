@@ -2,121 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.codefright.com/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/kmm-guide/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/android/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/cross-platform/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/ios/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/kmm/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/kotlin/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/</loc>
-    <lastmod>2025-01-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/interview-guide/</loc>
-    <lastmod>2025-01-03T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/interview/</loc>
-    <lastmod>2025-01-03T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/java/</loc>
-    <lastmod>2025-01-03T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/notes/</loc>
-    <lastmod>2025-01-03T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/jetpack-compose/</loc>
-    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/jetpack-compose/</loc>
-    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/ui-development/</loc>
-    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/custom-views/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/custom-views/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/ui/</loc>
-    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/posts/kotlin-coroutines/</loc>
-    <lastmod>2024-12-12T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/async-programming/</loc>
-    <lastmod>2024-12-12T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.codefright.com/tags/coroutines/</loc>
-    <lastmod>2024-12-12T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.codefright.com/resume/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.codefright.com/archives/</loc>
+    <loc>https://www.codefright.com/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -129,6 +19,10 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.codefright.com/search/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.codefright.com/tags/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
